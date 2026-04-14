@@ -22,7 +22,7 @@ export default function LoginPage() {
               Sign in to your account
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Don't have an account?{" "}
+              Don&apos;t have an account?{" "}
               <Link href="/#courses" className="font-medium text-primary hover:text-primary/80">
                 Enroll in a course today
               </Link>

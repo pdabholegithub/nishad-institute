@@ -97,11 +97,6 @@ export default async function StudentAssignmentsPage() {
                 {pending.map(asgn => {
                   const cfg = getStatusConfig(asgn.status, asgn.daysFromNow);
                   const Icon = cfg.icon;
-                  const dueStr = asgn.daysFromNow < 0
-                    ? `${Math.abs(asgn.daysFromNow)} day${Math.abs(asgn.daysFromNow) !== 1 ? "s" : ""} ago`
-                    : asgn.daysFromNow === 0
-                    ? "Due Today"
-                    : `Due in ${asgn.daysFromNow} day${asgn.daysFromNow !== 1 ? "s" : ""}`;
 
                   return (
                     <div key={asgn.id} className="flex items-center gap-4 rounded-xl border bg-card p-4 hover:shadow-sm transition-shadow">

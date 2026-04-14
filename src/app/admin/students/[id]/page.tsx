@@ -1,6 +1,6 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, CheckCircle2, Clock } from "lucide-react";
+import { ArrowLeft, BookOpen } from "lucide-react";
 import { notFound } from "next/navigation";
 import { enrollStudent, updatePaymentStatus } from "@/lib/actions";
 

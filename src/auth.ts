@@ -44,6 +44,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       // Add role to token right after login
       if (user) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         token.role = (user as any).role;
       }
       return token;
@@ -51,6 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async session({ session, token }) {
       // Add role to session for client usage if needed
       if (session.user) {
+         // eslint-disable-next-line @typescript-eslint/no-explicit-any
          (session.user as any).role = token.role;
       }
       return session;
