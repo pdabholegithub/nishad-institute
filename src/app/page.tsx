@@ -4,6 +4,9 @@ import { CourseCatalog } from "@/components/marketing/CourseCatalog";
 import prisma from "@/lib/prisma";
 import { ContactForm } from "@/components/marketing/ContactForm";
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function Home() {
   // Fetch real stats from DB
   const [totalStudents, totalCourses, totalBatches] = await Promise.all([
