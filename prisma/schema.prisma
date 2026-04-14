@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String       @id @default(uuid())
+  email        String       @unique
+  passwordHash String
+  name         String
+  role         String       @default("STUDENT") // ADMIN, INSTRUCTOR, STUDENT
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  instructingBatches Batch[]      @relation("InstructorBatches")
+  enrollments        Enrollment[]
+}
+
+model Course {
+  id           String   @id @default(uuid())
+  title        String
+  description  String
+  duration     String
+  level        String   // Beginner, Intermediate, Advanced
+  technologies String   // stored as JSON string or comma separated
+  features     String   // comma separated
+  price        String
+  popular      Boolean  @default(false)
+
+  batches      Batch[]
+}
+
+model Batch {
+  id           String       @id @default(uuid())
+  name         String
+  startDate    DateTime
+  schedule     String
+  courseId     String
+  instructorId String?
+  
+  course       Course       @relation(fields: [courseId], references: [id])
+  instructor   User?        @relation("InstructorBatches", fields: [instructorId], references: [id])
+  enrollments  Enrollment[]
+}
+
+model Enrollment {
+  id            String   @id @default(uuid())
+  studentId     String
+  batchId       String
+  paymentStatus String   @default("PENDING") // PENDING, PAID, REFUNDED
+  progress      Int      @default(0) // 0 to 100 percentage
+  createdAt     DateTime @default(now())
+
+  student User  @relation(fields: [studentId], references: [id])
+  batch   Batch @relation(fields: [batchId], references: [id])
+
+  @@unique([studentId, batchId])
+}
