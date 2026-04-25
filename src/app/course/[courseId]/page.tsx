@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, Calendar, Clock, CheckCircle2, ChevronLeft, Award, FileText, LayoutGrid, Timer } from "lucide-react";
+import { BookOpen, Calendar, CheckCircle2, ChevronLeft, Award, LayoutGrid, Timer } from "lucide-react";
 import courseModulesData from "@/data/courseModules.json";
 import { auth } from "@/auth";
 import { CheckoutButton } from "@/components/marketing/CheckoutButton";

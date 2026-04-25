@@ -80,7 +80,7 @@ export function CheckoutButton({ courseId, price, courseTitle, userEmail, userNa
         },
       };
 
-      // @ts-ignore
+      // @ts-expect-error - Razorpay is loaded via external script
       const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (error: unknown) {
