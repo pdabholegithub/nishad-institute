@@ -11,7 +11,7 @@ export async function GET(request: Request) {
 
     const query = level ? { where: { level: { contains: level, mode: 'insensitive' } } } : {};
 
-    const courses = await prisma.course.findMany(query as any);
+    const courses = await prisma.course.findMany(query as { where?: { level?: { contains?: string, mode?: "insensitive" | "default" } } });
 
     return NextResponse.json({
       success: true,
@@ -20,11 +20,10 @@ export async function GET(request: Request) {
       timestamp: new Date().toISOString()
     }, { status: 200 });
     
-  } catch (error: any) {
+  } catch {
     return NextResponse.json({
       success: false,
-      error: "Internal Server Error",
-      message: error.message
+      error: "Internal Server Error"
     }, { status: 500 });
   }
 }
@@ -63,11 +62,10 @@ export async function POST(request: Request) {
       data: newCourse
     }, { status: 201 }); // Status 201 Created
 
-  } catch (error: any) {
+  } catch {
     return NextResponse.json({
       success: false,
-      error: "Internal Server Error",
-      message: error.message
+      error: "Internal Server Error"
     }, { status: 500 });
   }
 }

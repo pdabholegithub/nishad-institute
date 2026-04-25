@@ -22,8 +22,8 @@ export async function GET(request: Request, { params }: { params: { id: string }
       data: course
     }, { status: 200 });
 
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch {
+    return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });
   }
 }
 
@@ -54,8 +54,8 @@ export async function PUT(request: Request, { params }: { params: { id: string }
       data: updatedCourse
     }, { status: 200 });
 
-  } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  } catch {
+    return NextResponse.json({ success: false, error: "Internal Server Error" }, { status: 500 });
   }
 }
 
@@ -64,7 +64,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   try {
     // We wrap in a try-catch to handle the case where it doesn't exist
-    const deletedCourse = await prisma.course.delete({
+    await prisma.course.delete({
       where: { id: params.id }
     });
 
@@ -73,7 +73,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       message: `Course ${params.id} successfully deleted.`
     }, { status: 200 });
 
-  } catch (error: any) {
+  } catch {
     // Prisma throws an error if record to delete does not exist
     return NextResponse.json({
       success: false,

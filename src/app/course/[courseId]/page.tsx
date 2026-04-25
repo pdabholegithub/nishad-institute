@@ -153,7 +153,7 @@ export default async function CourseDetailsPage({ params }: { params: { courseId
             </Link>
 
             <div className="mt-8 space-y-4 pt-6 border-t">
-              <p className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">What's Included</p>
+              <p className="font-semibold text-sm uppercase tracking-wider text-muted-foreground">What&apos;s Included</p>
               {features.map((f, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0" />
