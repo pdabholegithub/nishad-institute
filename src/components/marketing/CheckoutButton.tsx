@@ -49,7 +49,11 @@ export function CheckoutButton({ courseId, price, courseTitle, userEmail, userNa
         name: "Nishad IT Solutions",
         description: `Enrollment for ${courseTitle}`,
         order_id: orderData.id,
-        handler: async function (response: any) {
+        handler: async function (response: {
+          razorpay_payment_id: string;
+          razorpay_order_id: string;
+          razorpay_signature: string;
+        }) {
           // 4. Verify Payment
           const verifyRes = await fetch("/api/razorpay/verify", {
             method: "POST",
@@ -76,11 +80,13 @@ export function CheckoutButton({ courseId, price, courseTitle, userEmail, userNa
         },
       };
 
-      const rzp = new (window as any).Razorpay(options);
+      // @ts-ignore
+      const rzp = new window.Razorpay(options);
       rzp.open();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(error);
-      alert(error.message || "An error occurred during checkout");
+      const message = error instanceof Error ? error.message : "An error occurred during checkout";
+      alert(message);
     } finally {
       setLoading(false);
     }

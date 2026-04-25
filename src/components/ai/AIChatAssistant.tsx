@@ -67,12 +67,7 @@ export function AIChatAssistant() {
     }
   };
 
-  const quickPrompts = [
-    "Generate test cases for a login page",
-    "Explain Playwright page.goto()",
-    "How to handle dynamic dropdowns?",
-    "Best practices for API testing"
-  ];
+
 
   return (
     <>
