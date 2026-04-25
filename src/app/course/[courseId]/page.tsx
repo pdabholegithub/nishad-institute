@@ -9,7 +9,7 @@ import { CheckoutButton } from "@/components/marketing/CheckoutButton";
 interface CourseModule {
   id: string;
   title: string;
-  topics: string[];
+  lessons: { title: string }[];
 }
 
 interface CourseData {
@@ -112,10 +112,10 @@ export default async function CourseDetailsPage({ params }: { params: { courseId
                       <span className="text-[10px] uppercase tracking-widest font-black text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">Module {i + 1}</span>
                     </h3>
                     <ul className="grid md:grid-cols-2 gap-y-4 gap-x-8">
-                      {module.topics.map((topic, j) => (
+                      {module.lessons.map((lesson, j) => (
                         <li key={j} className="flex items-start gap-3 group/item">
                           <CheckCircle2 className="h-5 w-5 text-primary/40 group-hover/item:text-primary transition-colors shrink-0 mt-0.5" />
-                          <span className="text-sm text-foreground/80 leading-snug">{topic}</span>
+                          <span className="text-sm text-foreground/80 leading-snug">{lesson.title}</span>
                         </li>
                       ))}
                     </ul>

@@ -6,22 +6,42 @@
       {
         "id": "m1",
         "title": "Automation Foundations",
-        "topics": ["Automation Testing vs Manual Testing", "Environment Setup (Java, IntelliJ, Maven)", "Git & GitHub for Testers", "Clean Code practices for Automation"]
+        "lessons": [
+          { "id": "l1", "title": "Automation Testing vs Manual Testing", "type": "video", "duration": "12m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l2", "title": "Environment Setup (Java, IntelliJ, Maven)", "type": "video", "duration": "25m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l3", "title": "Git & GitHub for Testers", "type": "video", "duration": "18m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l4", "title": "Clean Code practices for Automation", "type": "reading", "duration": "10m" }
+        ]
       },
       {
         "id": "m2",
         "title": "Web Automation with Selenium & Playwright",
-        "topics": ["Advanced Locators (XPath, CSS Selectors)", "Handling Dynamic Web Elements", "Synchronization & Wait Strategies", "Page Object Model (POM) Design Pattern"]
+        "lessons": [
+          { "id": "l5", "title": "Advanced Locators (XPath, CSS Selectors)", "type": "video", "duration": "20m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l6", "title": "Handling Dynamic Web Elements", "type": "video", "duration": "22m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l7", "title": "Synchronization & Wait Strategies", "type": "video", "duration": "15m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l8", "title": "Page Object Model (POM) Design Pattern", "type": "video", "duration": "30m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" }
+        ]
       },
       {
         "id": "m3",
         "title": "API Automation Mastery",
-        "topics": ["REST API Fundamentals & HTTP Codes", "Automating APIs with RestAssured / Playwright", "JSON Schema Validation", "Authentication (Bearer, OAuth2) Handling"]
+        "lessons": [
+          { "id": "l9", "title": "REST API Fundamentals & HTTP Codes", "type": "video", "duration": "18m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l10", "title": "Automating APIs with RestAssured / Playwright", "type": "video", "duration": "28m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l11", "title": "JSON Schema Validation", "type": "video", "duration": "12m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l12", "title": "Authentication (Bearer, OAuth2) Handling", "type": "video", "duration": "20m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" }
+        ]
       },
       {
         "id": "m4",
         "title": "CI/CD & DevOps for Testers",
-        "topics": ["Jenkins & GitHub Actions Integration", "Dockerizing Test Frameworks", "Reporting (Allure, ExtentReports)", "Final Capstone Framework Project"]
+        "lessons": [
+          { "id": "l13", "title": "Jenkins & GitHub Actions Integration", "type": "video", "duration": "25m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l14", "title": "Dockerizing Test Frameworks", "type": "video", "duration": "20m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l15", "title": "Reporting (Allure, ExtentReports)", "type": "video", "duration": "15m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l16", "title": "Final Capstone Framework Project", "type": "project", "duration": "60m" }
+        ]
       }
     ]
   },
@@ -32,74 +52,35 @@
       {
         "id": "m1",
         "title": "Modern Frontend (React & Next.js)",
-        "topics": ["React Hooks & Context API Mastery", "Server Components vs Client Components", "TailwindCSS for Rapid UI Development", "State Management with Zustand/Redux"]
+        "lessons": [
+          { "id": "l1", "title": "React Hooks & Context API Mastery", "type": "video", "duration": "22m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l2", "title": "Server Components vs Client Components", "type": "video", "duration": "18m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l3", "title": "TailwindCSS for Rapid UI Development", "type": "video", "duration": "15m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l4", "title": "State Management with Zustand/Redux", "type": "video", "duration": "25m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" }
+        ]
       },
       {
         "id": "m2",
         "title": "Scalable Backend (Node.js & Express)",
-        "topics": ["Building RESTful APIs from Scratch", "Authentication & Authorization (JWT)", "Prisma ORM with PostgreSQL/MongoDB", "Error Handling & Middleware Design"]
-      },
-      {
-        "id": "m3",
-        "title": "Database Design & Security",
-        "topics": ["SQL vs NoSQL: Choosing the right DB", "Schema Design & Migrations", "Data Security & Input Validation", "Query Optimization & Indexing"]
-      },
-      {
-        "id": "m4",
-        "title": "Deployment & Full-Stack Integration",
-        "topics": ["Integrating Frontend & Backend", "Deployment on Vercel & AWS", "Unit & Integration Testing", "Final E-commerce Capstone Project"]
+        "lessons": [
+          { "id": "l5", "title": "Building RESTful APIs from Scratch", "type": "video", "duration": "30m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l6", "title": "Authentication & Authorization (JWT)", "type": "video", "duration": "25m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l7", "title": "Prisma ORM with PostgreSQL/MongoDB", "type": "video", "duration": "20m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" },
+          { "id": "l8", "title": "Error Handling & Middleware Design", "type": "video", "duration": "15m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" }
+        ]
       }
     ]
   },
-  "course-devops-003": {
-    "id": "course-devops-003",
-    "title": "Cloud & DevOps Mastery",
+  "mock-course-123": {
+    "id": "mock-course-123",
+    "title": "Mock Training Course",
     "modules": [
       {
         "id": "m1",
-        "title": "Cloud Infrastructure (AWS)",
-        "topics": ["VPC, EC2, S3, and IAM Fundamentals", "AWS Lambda & Serverless Concepts", "Cloud Security Best Practices", "Infrastructure Monitoring with CloudWatch"]
-      },
-      {
-        "id": "m2",
-        "title": "Containerization & Orchestration",
-        "topics": ["Docker: Images, Containers, and Registries", "Kubernetes (K8s) Architecture", "Deploying Microservices to K8s", "Helm Charts & Service Meshes"]
-      },
-      {
-        "id": "m3",
-        "title": "Infrastructure as Code (IaC)",
-        "topics": ["Terraform Basics & Providers", "State Management & Modules", "Automating Infra Deployment", "Configuration Management with Ansible"]
-      },
-      {
-        "id": "m4",
-        "title": "CI/CD Pipelines & Automation",
-        "topics": ["Building advanced GitHub Actions", "GitOps with ArgoCD", "Blue/Green & Canary Deployments", "DevSecOps Integration"]
-      }
-    ]
-  },
-  "course-java-004": {
-    "id": "course-java-004",
-    "title": "Core Java & Advanced OOP",
-    "modules": [
-      {
-        "id": "m1",
-        "title": "Java Language Fundamentals",
-        "topics": ["JVM Architecture & Memory Management", "Data Types, Variables, and Arrays", "Control Flow & Decision Making", "Exception Handling & Debugging"]
-      },
-      {
-        "id": "m2",
-        "title": "Object-Oriented Programming (OOP)",
-        "topics": ["Inheritance, Polymorphism, and Abstraction", "Encapsulation & Interfaces", "SOLID Principles in Java", "Design Patterns Introduction"]
-      },
-      {
-        "id": "m3",
-        "title": "Collections & Generics",
-        "topics": ["List, Set, Map & Queue Interfaces", "Custom Sorting with Comparable/Comparator", "Generics & Stream API Mastery", "Functional Programming in Java"]
-      },
-      {
-        "id": "m4",
-        "title": "Advanced Java & JDBC",
-        "topics": ["Multithreading & Concurrency", "File I/O & Serialization", "Connecting to DB via JDBC", "Building a Console-based Mini Project"]
+        "title": "Introduction",
+        "lessons": [
+          { "id": "l1", "title": "Welcome to the Platform", "type": "video", "duration": "5m", "videoUrl": "https://www.youtube.com/embed/S77nUM_t6-o" }
+        ]
       }
     ]
   }
