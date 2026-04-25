@@ -57,7 +57,7 @@ export function AIChatAssistant() {
       } else {
         setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
       }
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Sorry, I encountered an error. Please check your connection." },

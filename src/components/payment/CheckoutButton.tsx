@@ -41,7 +41,7 @@ export function CheckoutButton({
         name: "Nishad IT Solutions",
         description: "Course Enrollment Fee",
         order_id: order.id,
-        handler: async function (response: any) {
+        handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {
           // 3. Verify Payment
           const verifyRes = await fetch("/api/razorpay/verify", {
             method: "POST",
@@ -71,8 +71,8 @@ export function CheckoutButton({
         },
       };
 
-      const rzp = new (window as any).Razorpay(options);
-      rzp.on("payment.failed", function (response: any) {
+      const rzp = new (window as unknown as { Razorpay: new (options: unknown) => { on: (event: string, callback: (res: { error: { description: string } }) => void) => void; open: () => void } }).Razorpay(options);
+      rzp.on("payment.failed", function (response: { error: { description: string } }) {
         alert("Payment Failed. Reason: " + response.error.description);
       });
       rzp.open();
