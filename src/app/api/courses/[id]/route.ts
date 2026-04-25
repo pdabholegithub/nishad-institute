@@ -1,3 +1,4 @@
+import prisma from '@/lib/prisma';
 import { successResponse, withErrorHandler, errorResponse } from '@/lib/api-utils';
 
 // GET /api/courses/[id]
