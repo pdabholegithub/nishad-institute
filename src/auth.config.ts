@@ -16,8 +16,8 @@ export const authConfig = {
         
         // Role based access control
         const isAdminRoute = nextUrl.pathname.startsWith('/admin');
-        const userRole = (auth?.user as any)?.role || (auth as any)?.role;
-        const userEmail = auth?.user?.email || (auth as any)?.email;
+        const userRole = (auth?.user as { role?: string })?.role || (auth as { role?: string })?.role;
+        const userEmail = auth?.user?.email || (auth as { email?: string })?.email;
         
         if (isAdminRoute && userRole !== 'ADMIN' && userEmail !== 'admin@nishad.com') {
            return Response.redirect(new URL('/student', nextUrl));
@@ -26,8 +26,8 @@ export const authConfig = {
         return true;
       } else if (isLoggedIn && (nextUrl.pathname === '/login' || nextUrl.pathname === '/signup')) {
         console.log('MIDDLEWARE AUTH OBJECT (LOGIN):', JSON.stringify(auth, null, 2));
-        const userRole = (auth?.user as any)?.role || (auth as any)?.role;
-        const userEmail = auth?.user?.email || (auth as any)?.email;
+        const userRole = (auth?.user as { role?: string })?.role || (auth as { role?: string })?.role;
+        const userEmail = auth?.user?.email || (auth as { email?: string })?.email;
         
         if (userRole === 'ADMIN' || userEmail === 'admin@nishad.com') {
           return Response.redirect(new URL('/admin', nextUrl));
@@ -38,13 +38,13 @@ export const authConfig = {
     },
     async jwt({ token, user }) {
       if (user) {
-        token.role = (user as any).role;
+        token.role = (user as { role?: string }).role;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-         (session.user as any).role = token.role;
+         (session.user as { role?: string }).role = token.role as string;
       }
       return session;
     }

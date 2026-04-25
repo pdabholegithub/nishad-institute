@@ -5,11 +5,30 @@ import Link from "next/link";
 import { ArrowLeft, PlayCircle, CheckCircle2, Circle, FileText, ChevronDown } from "lucide-react";
 import courseData from "@/data/courseModules.json";
 
+interface Lesson {
+  id: string;
+  title: string;
+  type: string;
+  duration: string;
+  videoUrl?: string;
+}
+
+interface Module {
+  id: string;
+  title: string;
+  lessons: Lesson[];
+}
+
+interface Course {
+  title: string;
+  modules: Module[];
+}
+
 export default function CoursePlayerPage({ params }: { params: { courseId: string } }) {
   // Use the specific course if it exists in JSON, otherwise fallback to the mock course
-  const course = (courseData as any)[params.courseId] || (courseData as any)["mock-course-123"];
+  const course = (courseData as Record<string, Course>)[params.courseId] || (courseData as Record<string, Course>)["mock-course-123"];
   
-  const [activeLesson, setActiveLesson] = useState(course.modules[0].lessons[0]);
+  const [activeLesson, setActiveLesson] = useState<Lesson>(course.modules[0].lessons[0]);
   const [completedLessons, setCompletedLessons] = useState<Record<string, boolean>>({});
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>({
     [course.modules[0].id]: true // Expand first module by default
@@ -42,7 +61,7 @@ export default function CoursePlayerPage({ params }: { params: { courseId: strin
   };
 
   // Calculate progress
-  const totalLessons = course.modules.reduce((acc: number, m: any) => acc + m.lessons.length, 0);
+  const totalLessons = course.modules.reduce((acc: number, m: Module) => acc + m.lessons.length, 0);
   const completedCount = Object.values(completedLessons).filter(Boolean).length;
   const progressPercent = Math.round((completedCount / totalLessons) * 100) || 0;
 
@@ -125,7 +144,7 @@ export default function CoursePlayerPage({ params }: { params: { courseId: strin
           </div>
           
           <div className="flex-1 overflow-y-auto">
-            {course.modules.map((module: any, mIndex: number) => (
+            {course.modules.map((module: Module, mIndex: number) => (
               <div key={module.id} className="border-b border-slate-800/50">
                 <button 
                   onClick={() => toggleModule(module.id)}
@@ -140,7 +159,7 @@ export default function CoursePlayerPage({ params }: { params: { courseId: strin
                 
                 {expandedModules[module.id] && (
                   <div className="bg-slate-950">
-                    {module.lessons.map((lesson: any, lIndex: number) => {
+                    {module.lessons.map((lesson: Lesson, lIndex: number) => {
                       const isActive = activeLesson.id === lesson.id;
                       const isCompleted = completedLessons[lesson.id];
                       
