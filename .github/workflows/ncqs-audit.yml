@@ -1,0 +1,35 @@
+name: NCQS Audit (Gatekeeper)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: NCQS Audit: Run Linting (Check for 'any' and code style)
+        run: npm run lint
+
+      - name: NCQS Audit: Run Build (Check for type errors and compilation)
+        run: |
+          export DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
+          export NEXT_PUBLIC_RAZORPAY_KEY_ID="dummy"
+          export GEMINI_API_KEY="dummy"
+          export AUTH_SECRET="dummy"
+          npx prisma generate
+          npm run build
