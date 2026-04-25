@@ -29,20 +29,20 @@ export async function POST(req: Request) {
 
     // Convert OpenAI-style messages to Gemini-style history
     // Gemini requires the first message in history to be from the 'user'
-    let history = messages.slice(0, -1).map((m: any) => ({
+    let history = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
       role: m.role === "assistant" ? "model" : "user",
       parts: [{ text: m.content }],
     }));
 
     // Ensure history starts with 'user' role
-    const firstUserIndex = history.findIndex((m: any) => m.role === "user");
+    const firstUserIndex = history.findIndex((m: { role: string }) => m.role === "user");
     if (firstUserIndex !== -1) {
       history = history.slice(firstUserIndex);
     } else {
       history = [];
     }
 
-    const lastMessage = messages[messages.length - 1].content;
+    const lastMessage = (messages[messages.length - 1] as { content: string }).content;
 
     const chat = model.startChat({
       history: history,
@@ -56,8 +56,7 @@ export async function POST(req: Request) {
       role: "assistant",
       content: text
     });
-  } catch (error: any) {
-    console.error("AI Chat Error:", error);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch response from AI" },
       { status: 500 }
