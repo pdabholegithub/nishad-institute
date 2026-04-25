@@ -1,24 +1,34 @@
 import Link from "next/link";
-import { ArrowRight, Code2, Cpu, CheckCircle2, LayoutTemplate, Phone, Mail, MapPin, Star } from "lucide-react";
+import { ArrowRight, Code2, Cpu, CheckCircle2, LayoutTemplate, Phone, Mail, MapPin, Star, FlaskConical, ExternalLink, Zap } from "lucide-react";
 import { CourseCatalog } from "@/components/marketing/CourseCatalog";
 import prisma from "@/lib/prisma";
 import { ContactForm } from "@/components/marketing/ContactForm";
+import { unstable_cache } from "next/cache";
 
-export const dynamic = 'force-dynamic';
+// Cache the page for 60 seconds, revalidate in background (ISR)
+export const revalidate = 60;
 
+// Cached DB query — only hits the DB once per 60s, not on every request
+const getHomeStats = unstable_cache(
+  async () => {
+    const [totalStudents, totalCourses, totalBatches] = await Promise.all([
+      prisma.user.count({ where: { role: "STUDENT" } }),
+      prisma.course.count(),
+      prisma.batch.count(),
+    ]);
+    return { totalStudents, totalCourses, totalBatches };
+  },
+  ["home-stats"],
+  { revalidate: 60 }
+);
 
 export default async function Home() {
-  // Fetch real stats from DB
-  const [totalStudents, totalCourses, totalBatches] = await Promise.all([
-    prisma.user.count({ where: { role: "STUDENT" } }),
-    prisma.course.count(),
-    prisma.batch.count(),
-  ]);
+  const { totalStudents, totalCourses, totalBatches } = await getHomeStats();
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-24 pb-32 md:pt-32 md:pb-40 bg-slate-50 dark:bg-slate-950">
+      <section className="relative overflow-hidden pt-16 pb-12 md:pt-20 md:pb-16 bg-slate-50 dark:bg-slate-950">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         <div className="absolute left-1/2 -translate-x-1/2 top-0 -z-10 h-[400px] w-[700px] rounded-full bg-primary/20 opacity-20 blur-[120px]"></div>
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -62,9 +72,9 @@ export default async function Home() {
       </section>
 
       {/* Feature Section */}
-      <section className="py-20 bg-white dark:bg-slate-900" id="features">
+      <section className="py-10 bg-white dark:bg-slate-900" id="features">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl font-bold tracking-tight mb-4">Why Choose Nishad IT Solutions?</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We don&apos;t just teach theory; we build practical skills through real-world scenarios so you can crack interviews with confidence.
@@ -100,7 +110,7 @@ export default async function Home() {
       <CourseCatalog />
 
       {/* Dynamic Stats Section */}
-      <section className="py-20 border-y bg-slate-50 dark:bg-slate-950">
+      <section className="py-12 border-y bg-slate-50 dark:bg-slate-950">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
@@ -125,10 +135,66 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white dark:bg-slate-900" id="about">
+      {/* === LIVE PLAYGROUND BANNER === */}
+      <section className="py-12 bg-white dark:bg-slate-900 border-y border-emerald-100 dark:border-emerald-950">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-700 p-1 shadow-2xl shadow-emerald-500/20">
+            <div className="relative rounded-[calc(1.5rem-4px)] bg-slate-950 px-8 py-12 md:px-16 md:py-16 overflow-hidden">
+              {/* Background glow blobs */}
+              <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-cyan-500/20 blur-3xl" />
+              
+              <div className="relative flex flex-col lg:flex-row items-center justify-between gap-10">
+                {/* Left content */}
+                <div className="flex-1 text-center lg:text-left space-y-6">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-sm font-medium text-emerald-400">
+                    <Zap className="h-3.5 w-3.5 fill-emerald-400" />
+                    Interactive Learning Environment
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+                    Practice with Our{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                      Live Code Playground
+                    </span>
+                  </h2>
+                  <p className="text-slate-400 text-lg max-w-xl mx-auto lg:mx-0">
+                    Experiment with QA automation scripts, explore frameworks, and sharpen your skills in our dedicated browser-based playground — no setup required.
+                  </p>
+                  <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                    {["Playwright", "Selenium", "Python", "JavaScript", "Java", "API Testing"].map((tag) => (
+                      <span key={tag} className="inline-flex items-center rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium text-slate-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right CTA */}
+                <div className="flex flex-col items-center gap-4 shrink-0">
+                  <div className="h-20 w-20 rounded-2xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/30 animate-pulse">
+                    <FlaskConical className="h-10 w-10 text-white" />
+                  </div>
+                  <a
+                    href="https://pdabholegithub.github.io/nishad-it-solutions-playground/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/30 hover:from-emerald-400 hover:to-cyan-400 transition-all hover:scale-105 hover:shadow-emerald-500/50"
+                  >
+                    Open Playground
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                  <p className="text-xs text-slate-500">Opens in a new tab • Free to use</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12 bg-white dark:bg-slate-900" id="about">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
             <h2 className="text-3xl font-bold tracking-tight mb-4">What Our Students Say</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">Real feedback from real learners who transformed their careers with us.</p>
           </div>
@@ -161,7 +227,7 @@ export default async function Home() {
       </section>
 
       {/* Contact / Lead Capture Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-950 border-t" id="contact">
+      <section className="py-12 bg-slate-50 dark:bg-slate-950 border-t" id="contact">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
             {/* Left: info */}
@@ -179,7 +245,7 @@ export default async function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Call Us</p>
-                    <p className="font-semibold">+91 98765 43210</p>
+                    <p className="font-semibold">+91 70209 08516</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, ExternalLink } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -11,36 +11,47 @@ export function Footer() {
               <BookOpen className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold">Nishad IT</span>
             </Link>
-            <p className="text-sm text-muted-foreground text-balance">
+            <p className="text-sm text-slate-600 dark:text-slate-400 text-balance leading-relaxed">
               Empowering the next generation of software engineers through comprehensive, industry-relevant training and hands-on projects.
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Programs</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#qa" className="hover:text-primary transition-colors">QA Automation</Link></li>
-              <li><Link href="#fullstack" className="hover:text-primary transition-colors">Full-stack Dev</Link></li>
-              <li><Link href="#devops" className="hover:text-primary transition-colors">Cloud & DevOps</Link></li>
+            <h3 className="font-bold mb-4 text-slate-900 dark:text-white">Programs</h3>
+            <ul className="space-y-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+              <li><Link href="/#courses" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">QA Automation</Link></li>
+              <li><Link href="/#courses" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Full-stack Dev</Link></li>
+              <li><Link href="/#courses" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Cloud & DevOps</Link></li>
+              <li>
+                <a
+                  href="https://pdabholegithub.github.io/nishad-it-solutions-playground/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors py-0.5"
+                >
+                  <ExternalLink className="h-3 w-3" />
+                  Live Playground
+                </a>
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Company</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="#careers" className="hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
+            <h3 className="font-bold mb-4 text-slate-900 dark:text-white">Company</h3>
+            <ul className="space-y-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+              <li><Link href="/about" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">About Us</Link></li>
+              <li><Link href="/careers" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Careers</Link></li>
+              <li><Link href="/#contact" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Contact</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Legal</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="#privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#terms" className="hover:text-primary transition-colors">Terms of Service</Link></li>
+            <h3 className="font-bold mb-4 text-slate-900 dark:text-white">Legal</h3>
+            <ul className="space-y-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+              <li><Link href="/privacy" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="relative hover:text-primary transition-colors py-0.5 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
             © {new Date().getFullYear()} Nishad IT Solutions. All rights reserved.
           </p>
         </div>

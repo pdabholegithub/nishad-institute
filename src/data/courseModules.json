@@ -1,0 +1,55 @@
+{
+  "mock-course-123": {
+    "id": "mock-course-123",
+    "title": "Playwright Automation Mastery",
+    "modules": [
+      {
+        "id": "m1",
+        "title": "Getting Started with Playwright",
+        "lessons": [
+          {
+            "id": "l1",
+            "title": "Introduction to Next-Gen Automation",
+            "duration": "10:24",
+            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
+            "type": "video"
+          },
+          {
+            "id": "l2",
+            "title": "Environment Setup (Node.js & VS Code)",
+            "duration": "15:30",
+            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "type": "video"
+          }
+        ]
+      },
+      {
+        "id": "m2",
+        "title": "Core Playwright Concepts",
+        "lessons": [
+          {
+            "id": "l3",
+            "title": "Locators & Selectors Deep Dive",
+            "duration": "22:15",
+            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
+            "type": "video"
+          },
+          {
+            "id": "l4",
+            "title": "Handling Async Operations & Auto-Waiting",
+            "duration": "18:45",
+            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
+            "type": "video"
+          },
+          {
+            "id": "l5",
+            "title": "Module 2 Quiz",
+            "duration": "5:00",
+            "videoUrl": "",
+            "type": "quiz"
+          }
+        ]
+      }
+    ]
+  }
+}

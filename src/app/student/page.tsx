@@ -2,6 +2,7 @@ import { BookOpen, CalendarDays, CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
+import { CheckoutButton } from "@/components/payment/CheckoutButton";
 
 export default async function StudentDashboard() {
   const session = await auth();
@@ -108,9 +109,18 @@ export default async function StudentDashboard() {
                         </div>
                       </div>
                     </div>
-                    <Link href="#" className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 shrink-0">
-                      Go to Course
-                    </Link>
+                    {enr.paymentStatus === "PENDING" ? (
+                      <CheckoutButton
+                        enrollmentId={enr.id}
+                        amount={enr.batch.course.price}
+                        studentName={user.name}
+                        studentEmail={user.email}
+                      />
+                    ) : (
+                      <Link href={`/student/courses/${enr.batch.courseId}`} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2 shrink-0">
+                        Go to Course
+                      </Link>
+                    )}
                   </div>
                 ))
               )}

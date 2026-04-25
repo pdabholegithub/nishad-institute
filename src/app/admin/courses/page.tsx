@@ -33,12 +33,13 @@ export default async function CoursesListPage() {
                   <th className="h-12 px-6 text-left align-middle font-medium text-slate-500">Duration</th>
                   <th className="h-12 px-6 text-left align-middle font-medium text-slate-500">Level</th>
                   <th className="h-12 px-6 text-right align-middle font-medium text-slate-500">Price</th>
+                  <th className="h-12 px-6 text-right align-middle font-medium text-slate-500">Actions</th>
                 </tr>
               </thead>
               <tbody className="[&_tr:last-child]:border-0">
                 {courses.length === 0 ? (
                   <tr>
-                    <td colSpan={4} className="p-8 text-center text-slate-500 border-t">
+                    <td colSpan={5} className="p-8 text-center text-slate-500 border-t">
                       <div className="flex flex-col items-center justify-center">
                          <BookOpen className="h-8 w-8 text-slate-400 mb-2" />
                          <p>No courses found. Create your first course to get started.</p>
@@ -62,6 +63,24 @@ export default async function CoursesListPage() {
                         </span>
                       </td>
                       <td className="p-6 align-middle text-right font-medium">₹{course.price}</td>
+                      <td className="p-6 align-middle text-right">
+                        <div className="flex justify-end gap-2">
+                          <button disabled className="inline-flex items-center justify-center rounded-md border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500 opacity-50 cursor-not-allowed">
+                            Edit
+                          </button>
+                          <form action={async () => {
+                            "use server";
+                            const { deleteCourse } = await import('@/lib/actions');
+                            const formData = new FormData();
+                            formData.append('courseId', course.id);
+                            await deleteCourse(formData);
+                          }}>
+                            <button type="submit" className="inline-flex items-center justify-center rounded-md bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 px-3 py-1 text-xs font-medium transition-colors">
+                              Delete
+                            </button>
+                          </form>
+                        </div>
+                      </td>
                     </tr>
                   ))
                 )}

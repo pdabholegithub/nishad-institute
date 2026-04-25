@@ -11,9 +11,9 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    // Make sure to match the provider id 'credentials' configured in auth.ts
-    // with redirectTo parameter we can specify where to go or rely on Auth.js callback defaults
-    await signIn('credentials', Object.fromEntries(formData));
+    const email = formData.get('email') as string;
+    const redirectTo = email === 'admin@nishad.com' ? '/admin' : '/student';
+    await signIn('credentials', { ...Object.fromEntries(formData), redirectTo });
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
@@ -53,6 +53,13 @@ export async function createCourse(formData: FormData) {
   revalidatePath('/admin');
   revalidatePath('/admin/courses');
   redirect('/admin/courses');
+}
+
+export async function deleteCourse(formData: FormData) {
+  const courseId = formData.get('courseId') as string;
+  await prisma.course.delete({ where: { id: courseId } });
+  revalidatePath('/admin/courses');
+  revalidatePath('/');
 }
 
 export async function createBatch(formData: FormData) {
@@ -109,4 +116,53 @@ export async function updatePaymentStatus(formData: FormData) {
 
   revalidatePath(`/admin/students/${studentId}`);
   revalidatePath('/admin');
+}
+
+import bcrypt from 'bcryptjs';
+
+export async function registerUser(prevState: string | undefined, formData: FormData) {
+  try {
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+
+    if (!name || !email || !password) {
+      return 'Please fill all fields.';
+    }
+
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      return 'Email already in use.';
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    await prisma.user.create({
+      data: {
+        name,
+        email,
+        passwordHash,
+        role: 'STUDENT',
+      },
+    });
+
+    // Auto-login after registration and force redirect to student dashboard
+    await signIn('credentials', { email, password, redirectTo: '/student' });
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
+  }
+}
+
+import { signOut } from '@/auth';
+
+export async function logout() {
+  await signOut();
 }

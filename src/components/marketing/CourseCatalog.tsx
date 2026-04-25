@@ -2,18 +2,23 @@ import { CheckCircle2, Clock, BarChart, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import prisma from "@/lib/prisma";
+import { unstable_cache } from "next/cache";
+
+// Cached query — courses rarely change, safe to cache for 60s
+const getCourses = unstable_cache(
+  async () => prisma.course.findMany({ orderBy: { popular: "desc" } }),
+  ["courses-catalog"],
+  { revalidate: 60 }
+);
 
 export async function CourseCatalog() {
-  const coursesData = await prisma.course.findMany({
-    orderBy: {
-      popular: 'desc'
-    }
-  });
+  const coursesData = await getCourses();
+
 
   return (
-    <section className="py-24 bg-slate-50 dark:bg-slate-900 border-t" id="courses">
+    <section className="py-12 bg-slate-50 dark:bg-slate-900 border-t" id="courses">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Our Popular Programs</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Industry-aligned curriculum designed to take you from a beginner to an employable professional with hands-on labs and live mentorship.
@@ -64,9 +69,15 @@ export async function CourseCatalog() {
                         </span>
                       ))}
                       {courseTech.length > 4 && (
-                        <span className="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground">
-                          +{courseTech.length - 4} more
-                        </span>
+                        <div className="relative group/tooltip">
+                          <span className="inline-flex items-center rounded-md bg-secondary px-2.5 py-0.5 text-xs font-semibold text-secondary-foreground cursor-help hover:bg-secondary/80 transition-colors">
+                            +{courseTech.length - 4} more
+                          </span>
+                          <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:block w-max max-w-[200px] bg-slate-900 text-slate-50 text-xs rounded-md shadow-lg py-1.5 px-3 z-20 text-center pointer-events-none">
+                            {courseTech.slice(4).join(', ')}
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900"></div>
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -85,9 +96,12 @@ export async function CourseCatalog() {
                   <div>
                     <div className="text-sm text-muted-foreground font-medium mb-1">Course Fee</div>
                     <div className="text-xl font-bold">₹{parseInt(course.price).toLocaleString()}</div>
+                    <Link href={`/course/${course.id}`} className="text-xs text-primary hover:underline font-medium mt-2 inline-block">
+                      View full syllabus &rarr;
+                    </Link>
                   </div>
                   <Link 
-                    href={`/enroll?course=${course.id}`}
+                    href="/signup"
                     className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground h-10 px-4 py-2 text-sm font-medium transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     Enroll <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

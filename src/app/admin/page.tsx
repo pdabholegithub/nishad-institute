@@ -152,12 +152,12 @@ export default async function AdminDashboard() {
               <Link href="/admin/courses/new" className="w-full inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-blue-600 text-white hover:bg-blue-700 h-10 px-4 py-2">
                 Create New Course
               </Link>
-              <button className="w-full inline-flex items-center justify-center rounded-md border border-slate-200 text-sm font-medium transition-colors hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 h-10 px-4 py-2">
+              <Link href="/admin/batches/new" className="w-full inline-flex items-center justify-center rounded-md border border-slate-200 text-sm font-medium transition-colors hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 h-10 px-4 py-2">
                 Create New Batch
-              </button>
-              <button className="w-full inline-flex items-center justify-center rounded-md border border-slate-200 text-sm font-medium transition-colors hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 h-10 px-4 py-2">
+              </Link>
+              <Link href="/admin/finance" className="w-full inline-flex items-center justify-center rounded-md border border-slate-200 text-sm font-medium transition-colors hover:bg-slate-100 dark:border-slate-800 dark:hover:bg-slate-800 h-10 px-4 py-2">
                 Download Reports
-              </button>
+              </Link>
             </div>
             
             <div className="mt-8">
