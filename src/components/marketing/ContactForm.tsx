@@ -18,11 +18,11 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-emerald-100 dark:border-emerald-900/50 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 shadow-sm p-10 flex flex-col items-center justify-center text-center gap-4 min-h-[360px] animate-in fade-in zoom-in duration-500">
-        <div className="h-20 w-20 rounded-full bg-white dark:bg-emerald-900 shadow-sm flex items-center justify-center">
-          <CheckCircle2 className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
+      <div className="rounded-2xl border border-secondary/10 bg-gradient-to-br from-secondary/5 to-primary/5 shadow-sm p-10 flex flex-col items-center justify-center text-center gap-4 min-h-[360px] animate-in fade-in zoom-in duration-500">
+        <div className="h-20 w-20 rounded-full bg-white dark:bg-slate-900 shadow-sm flex items-center justify-center">
+          <CheckCircle2 className="h-10 w-10 text-primary" />
         </div>
-        <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-50">Message Received!</h3>
+        <h3 className="text-2xl font-bold text-foreground">Message Received!</h3>
         <p className="text-muted-foreground text-sm max-w-xs">
           Thank you for reaching out. Our team will contact you within 24 hours to schedule your free demo class.
         </p>

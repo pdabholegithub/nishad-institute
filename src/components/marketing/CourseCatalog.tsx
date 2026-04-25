@@ -85,7 +85,7 @@ export async function CourseCatalog() {
                   <div className="space-y-3 mb-8">
                     {courseFeatures.slice(0, 3).map((feature, i) => (
                       <div key={i} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-green-500 mr-2 shrink-0" />
+                        <CheckCircle2 className="w-5 h-5 text-primary mr-2 shrink-0" />
                         <span className="text-sm text-foreground/80">{feature}</span>
                       </div>
                     ))}

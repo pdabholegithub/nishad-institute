@@ -1,54 +1,105 @@
 {
-  "mock-course-123": {
-    "id": "mock-course-123",
-    "title": "Playwright Automation Mastery",
+  "course-qa-001": {
+    "id": "course-qa-001",
+    "title": "QA Automation Engineering",
     "modules": [
       {
         "id": "m1",
-        "title": "Getting Started with Playwright",
-        "lessons": [
-          {
-            "id": "l1",
-            "title": "Introduction to Next-Gen Automation",
-            "duration": "10:24",
-            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
-            "type": "video"
-          },
-          {
-            "id": "l2",
-            "title": "Environment Setup (Node.js & VS Code)",
-            "duration": "15:30",
-            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-            "type": "video"
-          }
-        ]
+        "title": "Automation Foundations",
+        "topics": ["Automation Testing vs Manual Testing", "Environment Setup (Java, IntelliJ, Maven)", "Git & GitHub for Testers", "Clean Code practices for Automation"]
       },
       {
         "id": "m2",
-        "title": "Core Playwright Concepts",
-        "lessons": [
-          {
-            "id": "l3",
-            "title": "Locators & Selectors Deep Dive",
-            "duration": "22:15",
-            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
-            "type": "video"
-          },
-          {
-            "id": "l4",
-            "title": "Handling Async Operations & Auto-Waiting",
-            "duration": "18:45",
-            "videoUrl": "https://www.youtube.com/embed/eX1mD1kZfGQ?si=g7JpU8-zZ9CXZx_n",
-            "type": "video"
-          },
-          {
-            "id": "l5",
-            "title": "Module 2 Quiz",
-            "duration": "5:00",
-            "videoUrl": "",
-            "type": "quiz"
-          }
-        ]
+        "title": "Web Automation with Selenium & Playwright",
+        "topics": ["Advanced Locators (XPath, CSS Selectors)", "Handling Dynamic Web Elements", "Synchronization & Wait Strategies", "Page Object Model (POM) Design Pattern"]
+      },
+      {
+        "id": "m3",
+        "title": "API Automation Mastery",
+        "topics": ["REST API Fundamentals & HTTP Codes", "Automating APIs with RestAssured / Playwright", "JSON Schema Validation", "Authentication (Bearer, OAuth2) Handling"]
+      },
+      {
+        "id": "m4",
+        "title": "CI/CD & DevOps for Testers",
+        "topics": ["Jenkins & GitHub Actions Integration", "Dockerizing Test Frameworks", "Reporting (Allure, ExtentReports)", "Final Capstone Framework Project"]
+      }
+    ]
+  },
+  "course-fs-002": {
+    "id": "course-fs-002",
+    "title": "Full-Stack Web Development",
+    "modules": [
+      {
+        "id": "m1",
+        "title": "Modern Frontend (React & Next.js)",
+        "topics": ["React Hooks & Context API Mastery", "Server Components vs Client Components", "TailwindCSS for Rapid UI Development", "State Management with Zustand/Redux"]
+      },
+      {
+        "id": "m2",
+        "title": "Scalable Backend (Node.js & Express)",
+        "topics": ["Building RESTful APIs from Scratch", "Authentication & Authorization (JWT)", "Prisma ORM with PostgreSQL/MongoDB", "Error Handling & Middleware Design"]
+      },
+      {
+        "id": "m3",
+        "title": "Database Design & Security",
+        "topics": ["SQL vs NoSQL: Choosing the right DB", "Schema Design & Migrations", "Data Security & Input Validation", "Query Optimization & Indexing"]
+      },
+      {
+        "id": "m4",
+        "title": "Deployment & Full-Stack Integration",
+        "topics": ["Integrating Frontend & Backend", "Deployment on Vercel & AWS", "Unit & Integration Testing", "Final E-commerce Capstone Project"]
+      }
+    ]
+  },
+  "course-devops-003": {
+    "id": "course-devops-003",
+    "title": "Cloud & DevOps Mastery",
+    "modules": [
+      {
+        "id": "m1",
+        "title": "Cloud Infrastructure (AWS)",
+        "topics": ["VPC, EC2, S3, and IAM Fundamentals", "AWS Lambda & Serverless Concepts", "Cloud Security Best Practices", "Infrastructure Monitoring with CloudWatch"]
+      },
+      {
+        "id": "m2",
+        "title": "Containerization & Orchestration",
+        "topics": ["Docker: Images, Containers, and Registries", "Kubernetes (K8s) Architecture", "Deploying Microservices to K8s", "Helm Charts & Service Meshes"]
+      },
+      {
+        "id": "m3",
+        "title": "Infrastructure as Code (IaC)",
+        "topics": ["Terraform Basics & Providers", "State Management & Modules", "Automating Infra Deployment", "Configuration Management with Ansible"]
+      },
+      {
+        "id": "m4",
+        "title": "CI/CD Pipelines & Automation",
+        "topics": ["Building advanced GitHub Actions", "GitOps with ArgoCD", "Blue/Green & Canary Deployments", "DevSecOps Integration"]
+      }
+    ]
+  },
+  "course-java-004": {
+    "id": "course-java-004",
+    "title": "Core Java & Advanced OOP",
+    "modules": [
+      {
+        "id": "m1",
+        "title": "Java Language Fundamentals",
+        "topics": ["JVM Architecture & Memory Management", "Data Types, Variables, and Arrays", "Control Flow & Decision Making", "Exception Handling & Debugging"]
+      },
+      {
+        "id": "m2",
+        "title": "Object-Oriented Programming (OOP)",
+        "topics": ["Inheritance, Polymorphism, and Abstraction", "Encapsulation & Interfaces", "SOLID Principles in Java", "Design Patterns Introduction"]
+      },
+      {
+        "id": "m3",
+        "title": "Collections & Generics",
+        "topics": ["List, Set, Map & Queue Interfaces", "Custom Sorting with Comparable/Comparator", "Generics & Stream API Mastery", "Functional Programming in Java"]
+      },
+      {
+        "id": "m4",
+        "title": "Advanced Java & JDBC",
+        "topics": ["Multithreading & Concurrency", "File I/O & Serialization", "Connecting to DB via JDBC", "Building a Console-based Mini Project"]
       }
     ]
   }

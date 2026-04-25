@@ -39,12 +39,12 @@ export default async function FinancePage() {
         <div className="rounded-xl border bg-white dark:bg-slate-900 shadow-sm p-6">
           <div className="flex items-center justify-between pb-2">
             <h3 className="text-sm font-medium text-slate-500">Gross Revenue</h3>
-            <div className="h-8 w-8 rounded-full bg-emerald-100 flex items-center justify-center">
-              <IndianRupee className="h-4 w-4 text-emerald-600" />
+            <div className="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center">
+              <IndianRupee className="h-4 w-4 text-orange-600" />
             </div>
           </div>
           <div className="text-3xl font-bold text-slate-900 dark:text-white">{formattedRevenue}</div>
-          <p className="text-xs text-emerald-600 font-medium mt-1 flex items-center">
+          <p className="text-xs text-orange-600 font-medium mt-1 flex items-center">
             <TrendingUp className="h-3 w-3 mr-1" /> Verified via Razorpay
           </p>
         </div>
@@ -52,8 +52,8 @@ export default async function FinancePage() {
         <div className="rounded-xl border bg-white dark:bg-slate-900 shadow-sm p-6">
           <div className="flex items-center justify-between pb-2">
             <h3 className="text-sm font-medium text-slate-500">Successful Transactions</h3>
-            <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-              <CheckCircle2 className="h-4 w-4 text-blue-600" />
+            <div className="h-8 w-8 rounded-full bg-orange-100 flex items-center justify-center">
+              <CheckCircle2 className="h-4 w-4 text-orange-600" />
             </div>
           </div>
           <div className="text-3xl font-bold text-slate-900 dark:text-white">{paidEnrollments.length}</div>

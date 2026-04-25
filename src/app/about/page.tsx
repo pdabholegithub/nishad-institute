@@ -6,7 +6,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Link href="/" className="inline-flex items-center gap-2 font-bold mb-12 text-slate-900 dark:text-white hover:opacity-80 transition-opacity">
-          <BookOpen className="h-6 w-6 text-blue-600" />
+          <BookOpen className="h-6 w-6 text-orange-600" />
           <span className="text-xl">Nishad IT Solutions</span>
         </Link>
         
@@ -24,8 +24,8 @@ export default function AboutPage() {
             </section>
 
             <div className="grid md:grid-cols-2 gap-6 not-prose my-12">
-              <div className="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
-                <Target className="h-8 w-8 text-blue-600 mb-4" />
+              <div className="p-6 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800">
+                <Target className="h-8 w-8 text-orange-600 mb-4" />
                 <h3 className="font-bold text-slate-900 dark:text-white mb-2">Practical Focus</h3>
                 <p className="text-sm text-slate-600 dark:text-slate-400">100% hands-on learning with real-world projects and industry scenarios.</p>
               </div>
@@ -56,10 +56,10 @@ export default function AboutPage() {
             </section>
 
             <div className="mt-12 p-8 rounded-2xl bg-slate-900 text-white text-center">
-              <Award className="h-12 w-12 mx-auto mb-4 text-blue-400" />
+              <Award className="h-12 w-12 mx-auto mb-4 text-orange-400" />
               <h2 className="text-2xl font-bold mb-4">Ready to Start Your Journey?</h2>
               <p className="mb-6 text-slate-400">Join our next batch and transform your career with industry-recognized certification.</p>
-              <Link href="/#courses" className="inline-flex h-11 items-center justify-center rounded-md bg-blue-600 px-8 text-sm font-medium hover:bg-blue-700 transition-colors">
+              <Link href="/#courses" className="inline-flex h-11 items-center justify-center rounded-md bg-orange-600 px-8 text-sm font-medium hover:bg-orange-700 transition-colors">
                 View All Courses
               </Link>
             </div>

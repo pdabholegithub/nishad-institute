@@ -26,7 +26,7 @@ export function Footer() {
                   href="https://pdabholegithub.github.io/nishad-it-solutions-playground/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors py-0.5"
+                  className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 transition-colors py-0.5"
                 >
                   <ExternalLink className="h-3 w-3" />
                   Live Playground

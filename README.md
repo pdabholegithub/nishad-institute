@@ -1,76 +1,116 @@
-# 🎓 Nishad Institute Solutions
+# 🎓 Nishad Institute Solutions: Next-Gen EdTech Platform
 
-A professional, full-stack management platform for IT training institutes. Built with **Next.js 14**, **Prisma**, and **NextAuth v5**, this platform provides a seamless experience for administrators to manage courses, batches, and students, while giving students a centralized place to track their learning journey.
+A professional, full-stack management platform for IT training institutes. Built with **Next.js 14**, **Prisma**, and **NextAuth v5**, this platform provides a high-end experience for administrators, students, and prospective learners.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fpdabholegithub%2Fnishad-institute)
+---
 
-## 📸 Screenshots
+## 🚀 Key Features
 
-### 🌐 Public Landing Page
-![Landing Page](public/screenshots/landing.png)
+### 🏠 High-Conversion Marketing Engine
+- **Dynamic Course Catalog**: Automatically synced with the database.
+- **Visual Curriculum Roadmaps**: Module-wise syllabus breakdown with progress visualization.
+- **Free Study Vault**: Lead-generation section with downloadable cheat sheets and technical notes.
+- **Urgency Drivers**: Live countdown timers for upcoming batches and "Summer 2026 Admissions" badges.
+- **Social Proof**: Premium testimonials and "Hiring Partners" ticker.
+- **AI-Powered Counselor**: 24/7 AI Chatbot integrated with Google Gemini for answering student queries.
+- **One-Click Support**: Floating WhatsApp inquiry button for instant counseling.
 
-### 🔐 Secure Student Portal
-![Login Page](public/screenshots/login.png)
+### 💳 Integrated Payments & Enrollment
+- **Razorpay Integration**: Fully functional checkout flow for course purchases.
+- **Automated Onboarding**: Students are instantly enrolled and granted dashboard access upon successful payment.
+- **Payment Verification**: Secure backend signature verification for all transactions.
 
-## ✨ Features
+### 👩‍🎓 Student Learning Ecosystem
+- **Interactive Dashboard**: Personalized progress tracking and active course management.
+- **Resource Center**: Access to course-specific notes, assignments, and mock test materials.
+- **1-on-1 Support**: Integrated links for live Zoom sessions and mentoring.
+- **Automated Certification**: (Roadmapped) Generate professional certificates upon course completion.
 
-### 🏢 Administrator Command Center
-- **Real-time Analytics**: Dynamic dashboard showing student enrollment metrics, active batches, and revenue tracking.
-- **Course & Batch Management**: Full CRUD functionality to create and manage the institute's course catalog and upcoming cohorts.
-- **Student CRM**: Manage student profiles, track payment statuses, and enroll students in any batch with a single click.
+### 🏢 Administrator Control Center
+- **Analytics Dashboard**: Real-time tracking of revenue, active students, and batch occupancy.
+- **Content Management**: Effortlessly manage courses, batches, and curriculum data.
+- **Student CRM**: Manage student statuses, payment records, and enrollment histories.
 
-### 👩‍🎓 Student Learning Portal
-- **Dashboard**: personalized view of active courses and learning progress.
-- **Schedule tracking**: Professional 7-day calendar view of upcoming live sessions and batches.
-- **Assignments**: Track upcoming and submitted tasks per course.
-- **Profile**: Full record of enrollment history and academic standing.
-
-### 🏠 Public Marketing Site
-- **Dynamic Catalog**: Automatically updates based on the courses added in the admin panel.
-- **Lead Capture**: Functional contact form for new student inquiries and demo class requests.
-- **SEO Optimized**: Built for performance and discoverability.
+---
 
 ## 🛠️ Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
-- **Database**: SQLite with Prisma ORM
-- **Authentication**: Auth.js (NextAuth v5) with Bcrypt
-- **Styling**: Tailwind CSS & Lucide Icons
-- **Components**: Reusable, modern UI components with framer-motion animations
+- **Database**: PostgreSQL (Production) / SQLite (Development) with Prisma ORM
+- **Authentication**: Auth.js (NextAuth v5) with Bcrypt security
+- **Payments**: Razorpay API
+- **AI**: Google Gemini API (via AI Chat Assistant)
+- **Styling**: Tailwind CSS (Custom Orange & Amber Theme)
+- **Icons**: Lucide React
+- **Animations**: Framer Motion & CSS Micro-animations
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
-- npm / pnpm / yarn
+- Razorpay Account (for payments)
+- Google AI (Gemini) API Key (for chatbot)
 
 ### Installation
-1. Clone the repository:
+1. **Clone & Install**:
    ```bash
    git clone https://github.com/pdabholegithub/nishad-institute.git
-   ```
-2. Install dependencies:
-   ```bash
+   cd nishad-institute
    npm install
    ```
-3. Set up your environment variables:
-   - Create a `.env` file in the root.
-   - Add `AUTH_SECRET="your-secret-here"`
-   - Add `DATABASE_URL="file:./dev.db"`
-4. Initialize the database:
+
+2. **Environment Setup**:
+   Create a `.env` file in the root and add:
+   ```env
+   # Auth
+   AUTH_SECRET="your-secret-key"
+   
+   # Database
+   DATABASE_URL="file:./dev.db" # Or your PostgreSQL URL
+   
+   # Payments (Razorpay)
+   NEXT_PUBLIC_RAZORPAY_KEY_ID="rzp_test_..."
+   RAZORPAY_KEY_SECRET="your_secret_..."
+   
+   # AI (Gemini)
+   GOOGLE_GENERATIVE_AI_API_KEY="your_gemini_key"
+   ```
+
+3. **Database Initialization**:
    ```bash
    npx prisma generate
    npx prisma db push
-   node prisma/seed.js
+   node prisma/seed.js # Optional: Adds demo data
    ```
-5. Run the development server:
+
+4. **Run Development Server**:
    ```bash
    npm run dev
    ```
 
-## 🔑 Demo Credentials
+---
+
+## 📖 How to Update Content
+
+### 📑 Updating Course Syllabus
+The detailed module roadmaps are stored in `src/data/courseModules.json`. To update a course curriculum:
+1. Open the JSON file.
+2. Find the `courseId` (matches the ID in your Database).
+3. Add or modify the `modules` and `topics` arrays.
+
+### 📅 Managing Batches
+Batches appear on the homepage under "Upcoming Batches". These are pulled directly from the **Prisma `Batch` model**. You can manage them via the **Admin Dashboard** (`/admin/batches`) or by running:
+```bash
+npx prisma studio
+```
+
+---
+
+## 🔐 Credentials (Demo)
 - **Admin**: `admin@nishad.com` / `password123`
 - **Student**: `student@nishad.com` / `password123`
 
 ---
-*Built for Nishad IT Solutions.*
+*Developed for Nishad IT Solutions. Empowering IT Professionals Worldwide.*

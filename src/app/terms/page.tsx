@@ -6,7 +6,7 @@ export default function TermsOfServicePage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-12 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <Link href="/" className="inline-flex items-center gap-2 font-bold mb-12 text-slate-900 dark:text-white hover:opacity-80 transition-opacity">
-          <BookOpen className="h-6 w-6 text-blue-600" />
+          <BookOpen className="h-6 w-6 text-orange-600" />
           <span className="text-xl">Nishad IT Solutions</span>
         </Link>
         

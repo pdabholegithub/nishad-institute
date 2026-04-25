@@ -19,7 +19,7 @@ export async function Navbar() {
             </Link>
           </div>
           
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-6">
             <Link href="/#courses" className="relative text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left">
               Courses
             </Link>
@@ -33,7 +33,7 @@ export async function Navbar() {
               href="https://pdabholegithub.github.io/nishad-it-solutions-playground/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors py-1 border border-emerald-500/30 hover:border-emerald-500/60 rounded-full px-3 bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-950/60"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors py-1 border border-primary/30 hover:border-primary/60 rounded-full px-4 bg-primary/5 dark:bg-primary/10 hover:bg-primary/10 dark:hover:bg-primary/20"
             >
               <FlaskConical className="h-3.5 w-3.5" />
               Playground

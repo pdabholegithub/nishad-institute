@@ -49,13 +49,13 @@ export function AIChatAssistant() {
       });
 
       const data = await response.json();
-      if (data.error) {
+      if (!data.success) {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", content: `Error: ${data.error}` },
+          { role: "assistant", content: `Error: ${data.message || data.error || "Unknown error"}` },
         ]);
       } else {
-        setMessages((prev) => [...prev, { role: "assistant", content: data.content }]);
+        setMessages((prev) => [...prev, { role: "assistant", content: data.data.content }]);
       }
     } catch {
       setMessages((prev) => [
@@ -79,7 +79,7 @@ export function AIChatAssistant() {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 p-4 rounded-full bg-blue-600 text-white shadow-2xl hover:bg-blue-700 transition-all z-50 flex items-center gap-2 group ${isOpen ? 'scale-0' : 'scale-100'}`}
+        className={`fixed bottom-6 right-6 p-4 rounded-full bg-primary text-white shadow-2xl hover:bg-primary/90 transition-all z-50 flex items-center gap-2 group ${isOpen ? 'scale-0' : 'scale-100'}`}
       >
         <Sparkles className="h-5 w-5 animate-pulse" />
         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-medium">
@@ -99,7 +99,7 @@ export function AIChatAssistant() {
         }`}
       >
         {/* Header */}
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-blue-600 rounded-t-2xl flex items-center justify-between text-white shrink-0">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-800 bg-primary rounded-t-2xl flex items-center justify-between text-white shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-white/20 rounded-lg">
               <Bot className="h-5 w-5" />
@@ -144,7 +144,7 @@ export function AIChatAssistant() {
               <div
                 className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                   msg.role === "user"
-                    ? "bg-blue-600 text-white rounded-tr-none"
+                    ? "bg-primary text-white rounded-tr-none"
                     : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 shadow-sm border border-slate-100 dark:border-slate-700 rounded-tl-none"
                 }`}
               >
@@ -170,7 +170,7 @@ export function AIChatAssistant() {
           {isLoading && (
             <div className="flex justify-start">
               <div className="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                <Loader2 className="h-4 w-4 animate-spin text-primary" />
                 <span className="text-xs text-slate-500 font-medium">Thinking...</span>
               </div>
             </div>
@@ -178,16 +178,23 @@ export function AIChatAssistant() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Quick Prompts */}
-        {messages.length < 3 && !isLoading && (
-          <div className="px-4 py-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-2 shrink-0">
-            {quickPrompts.map((p) => (
+        {/* Smart Suggestions */}
+        {messages.length < 5 && !isLoading && (
+          <div className="px-4 py-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/80 flex flex-wrap gap-2 shrink-0">
+            <p className="w-full text-[9px] uppercase tracking-widest font-bold text-slate-400 mb-1">Suggested for you</p>
+            {[
+              "Tell me about the QA Course",
+              "Playwright vs Selenium?",
+              "How to book a free demo?",
+              "Is there a job guarantee?",
+              "What is the course fee?"
+            ].map((p) => (
               <button
                 key={p}
                 onClick={() => {
                   setInput(p);
                 }}
-                className="text-[10px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-900/30 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 px-2.5 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 transition-all"
+                className="text-[10px] font-semibold bg-white dark:bg-slate-800 hover:bg-primary dark:hover:bg-primary text-slate-600 dark:text-slate-300 hover:text-white dark:hover:text-white px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:scale-105 active:scale-95"
               >
                 {p}
               </button>
@@ -206,19 +213,19 @@ export function AIChatAssistant() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask anything about QA..."
-              className="w-full pl-4 pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-blue-600 text-sm"
+              className="w-full pl-4 pr-12 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary text-sm"
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="absolute right-2 top-1.5 p-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition-all"
+              className="absolute right-2 top-1.5 p-1.5 rounded-lg bg-primary text-white hover:bg-primary/90 disabled:opacity-50 transition-all"
             >
               <Send className="h-4 w-4" />
             </button>
           </div>
           <p className="mt-2 text-[10px] text-center text-slate-400">
-            Powered by OpenAI • Expert QA Training Assistant
+            Powered by Google Gemini • Expert QA Training Assistant
           </p>
         </form>
       </div>
