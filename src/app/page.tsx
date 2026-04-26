@@ -88,7 +88,7 @@ export default async function Home() {
     { question: "Are the classes live or pre-recorded?", answer: "Most of our primary sessions are 100% Live Zoom sessions with expert mentors, accompanied by recorded backups for your future reference." }
   ];
 
-  const displayFAQs = faqs.length > 0 ? faqs.map(f => ({ q: f.question, a: f.answer })) : defaultFAQs;
+  const displayFAQs = faqs.length > 0 ? faqs : defaultFAQs;
 
   const defaultTestimonials = [
     { name: "Priya Patel", role: "QA Engineer @ TCS", text: "The QA Automation course was extremely practical. I landed my first job within 2 months of completing the program. Highly recommend!", rating: 5 },
@@ -183,13 +183,13 @@ export default async function Home() {
             {displayFAQs.map((faq, i) => (
               <details key={i} className="group rounded-xl border bg-white dark:bg-slate-900 shadow-sm overflow-hidden transition-all duration-300 open:ring-2 open:ring-primary/20">
                 <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold hover:text-primary transition-colors">
-                  {faq.q}
+                  {faq.question}
                   <span className="ml-4 transition-transform group-open:rotate-180">
                     <ChevronRight className="h-5 w-5" />
                   </span>
                 </summary>
                 <div className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">
-                  {faq.a}
+                  {faq.answer}
                 </div>
               </details>
             ))}
