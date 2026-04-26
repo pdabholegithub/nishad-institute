@@ -34,7 +34,7 @@ export default async function AdminTestimonialsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Manage Testimonials</h1>
-          <p className="text-sm text-slate-500">Manage student feedback shown in the "What Our Students Say" section.</p>
+          <p className="text-sm text-slate-500">Manage student feedback shown in the &ldquo;What Our Students Say&rdquo; section.</p>
         </div>
       </div>
 

@@ -10,9 +10,9 @@ export function CountdownTimer({ targetDate }: { targetDate?: string }) {
     seconds: 0,
   });
 
-  const finalTarget = targetDate ? new Date(targetDate) : new Date('2026-06-01T00:00:00');
-
   useEffect(() => {
+    const finalTarget = targetDate ? new Date(targetDate) : new Date('2026-06-01T00:00:00');
+    
     const timer = setInterval(() => {
       const now = new Date();
       const difference = finalTarget.getTime() - now.getTime();
@@ -30,7 +30,7 @@ export function CountdownTimer({ targetDate }: { targetDate?: string }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [finalTarget]);
+  }, [targetDate]);
 
   return (
     <div className="flex gap-4 justify-center md:justify-start">

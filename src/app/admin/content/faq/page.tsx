@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma";
-import { HelpCircle, Plus, Trash2, Edit2 } from "lucide-react";
+import { HelpCircle, Plus, Trash2 } from "lucide-react";
 import { revalidatePath } from "next/cache";
 
 async function addFAQ(formData: FormData) {
