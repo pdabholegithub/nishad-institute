@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.0-flash", 
+      model: "gemini-1.5-flash", 
       systemInstruction: `You are Nishad IT Solutions' specialized QA Automation Assistant. 
       Your expertise includes:
       - Generating comprehensive test cases (Manual and Automated)
@@ -26,32 +26,50 @@ export async function POST(req: Request) {
       Be concise, professional, and encouraging.`
     });
 
-    // Convert OpenAI-style messages to Gemini-style history
-    let history = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
-      role: m.role === "assistant" ? "model" : "user",
-      parts: [{ text: m.content }],
-    }));
+    try {
+      // Convert OpenAI-style messages to Gemini-style history
+      let history = messages.slice(0, -1).map((m: { role: string; content: string }) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }],
+      }));
 
-    const firstUserIndex = history.findIndex((m: { role: string }) => m.role === "user");
-    if (firstUserIndex !== -1) {
-      history = history.slice(firstUserIndex);
-    } else {
-      history = [];
+      const firstUserIndex = history.findIndex((m: { role: string }) => m.role === "user");
+      if (firstUserIndex !== -1) {
+        history = history.slice(firstUserIndex);
+      } else {
+        history = [];
+      }
+
+      const lastMessage = (messages[messages.length - 1] as { content: string }).content;
+
+      const chat = model.startChat({
+        history: history,
+      });
+
+      const result = await chat.sendMessage(lastMessage);
+      const response = await result.response;
+      const text = response.text();
+
+      return successResponse({
+        role: "assistant",
+        content: text
+      });
+    } catch (error: any) {
+      console.error("Gemini API Error:", error);
+      
+      // Handle Quota/Rate Limit Errors
+      if (error.message?.includes("429") || error.status === 429) {
+        return successResponse({
+          role: "assistant",
+          content: "😊 **The AI is taking a quick break!**\n\nWe've reached our free usage limit for this minute. Please wait about 30 seconds and try your question again. Thank you for your patience!"
+        });
+      }
+
+      // Generic fallback
+      return successResponse({
+        role: "assistant",
+        content: "Sorry, I encountered an error while processing your request. Please try again in a moment."
+      });
     }
-
-    const lastMessage = (messages[messages.length - 1] as { content: string }).content;
-
-    const chat = model.startChat({
-      history: history,
-    });
-
-    const result = await chat.sendMessage(lastMessage);
-    const response = await result.response;
-    const text = response.text();
-
-    return successResponse({
-      role: "assistant",
-      content: text
-    });
   });
 }
