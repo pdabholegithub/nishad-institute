@@ -2,6 +2,11 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { successResponse, withErrorHandler } from '@/lib/api-utils';
 import kb from '@/data/knowledge-base.json';
 
+interface ChatMessage {
+  role: string;
+  content: string;
+}
+
 // Helper to find answer from local knowledge base
 function getLocalKnowledgeBaseResponse(query: string) {
   const normalizedQuery = query.toLowerCase();
@@ -12,7 +17,7 @@ function getLocalKnowledgeBaseResponse(query: string) {
 }
 
 // Helper to call Groq API (Secondary Failover)
-async function callGroq(messages: any[]) {
+async function callGroq(messages: ChatMessage[]) {
   if (!process.env.GROQ_API_KEY) return null;
 
   try {
@@ -47,8 +52,8 @@ async function callGroq(messages: any[]) {
 
 export async function POST(req: Request) {
   return withErrorHandler(async () => {
-    const { messages } = await req.json();
-    const lastMessage = (messages[messages.length - 1] as { content: string }).content;
+    const { messages }: { messages: ChatMessage[] } = await req.json();
+    const lastMessage = messages[messages.length - 1].content;
 
     // 1. Try Primary AI (Google Gemini)
     if (process.env.GEMINI_API_KEY) {
@@ -56,24 +61,25 @@ export async function POST(req: Request) {
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const model = genAI.getGenerativeModel({ 
           model: "gemini-1.5-flash", 
-          systemInstruction: `You are Nishad IT Solutions' specialized QA Automation Assistant... [trimmed for brevity]`
+          systemInstruction: "You are Nishad IT Solutions' specialized QA Automation Assistant. Provide Playwright code examples."
         });
 
         // Convert messages for Gemini
-        let history = messages.slice(0, -1).map((m: any) => ({
+        let history = messages.slice(0, -1).map((m: ChatMessage) => ({
           role: m.role === "assistant" ? "model" : "user",
           parts: [{ text: m.content }],
         }));
         
-        const firstUserIndex = history.findIndex((m: any) => m.role === "user");
+        const firstUserIndex = history.findIndex((m: { role: string }) => m.role === "user");
         history = firstUserIndex !== -1 ? history.slice(firstUserIndex) : [];
 
         const chat = model.startChat({ history });
         const result = await chat.sendMessage(lastMessage);
         const response = await result.response;
         return successResponse({ role: "assistant", content: response.text() });
-      } catch (error: any) {
-        console.error("Gemini Primary Error:", error.message);
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("Gemini Primary Error:", errorMessage);
         // Continue to failover
       }
     }
