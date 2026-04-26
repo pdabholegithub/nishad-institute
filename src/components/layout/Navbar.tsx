@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookOpen, Menu, FlaskConical } from 'lucide-react';
+import { BookOpen, FlaskConical } from 'lucide-react';
 import { auth } from '@/auth';
 import { logout } from '@/lib/actions';
 import { MobileMenu } from './MobileMenu';

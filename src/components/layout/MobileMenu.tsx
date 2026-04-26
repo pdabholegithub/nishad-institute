@@ -6,7 +6,14 @@ import { Menu, X, BookOpen, FlaskConical, LayoutDashboard, LogOut, LogIn, UserPl
 import { logout } from '@/lib/actions';
 
 interface MobileMenuProps {
-  session: any;
+  session: {
+    user?: {
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      role?: string | null;
+    } | null;
+  } | null;
 }
 
 export function MobileMenu({ session }: MobileMenuProps) {
