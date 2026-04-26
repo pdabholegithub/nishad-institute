@@ -1,0 +1,26 @@
+[
+  {
+    "keywords": ["fee", "cost", "price", "payment", "how much"],
+    "answer": "Our QA Automation courses are competitively priced to ensure accessibility. For the latest pricing on the Playwright, Selenium, or Full Stack QA courses, please visit our [Courses Page](/courses) or contact us directly for current seasonal discounts!"
+  },
+  {
+    "keywords": ["syllabus", "curriculum", "learn", "topics", "playwright", "selenium"],
+    "answer": "Our curriculum is industry-focused! \n- **Playwright**: Setup, Locators, Assertions, Page Object Model, CI/CD with GitHub Actions.\n- **Selenium**: Java/Python bindings, WebDriver architecture, TestNG/PyTest, Framework design.\n- **API Testing**: Postman, RestAssured, and Automated API validation.\nYou can download the full syllabus on each individual [course page](/courses)."
+  },
+  {
+    "keywords": ["placement", "job", "guarantee", "career", "interview"],
+    "answer": "We provide 100% placement assistance, including resume building, mock interviews, and direct referrals to our partner companies. While no institute can 'guarantee' a job, we ensure you are technically ready to crack the best product-based companies."
+  },
+  {
+    "keywords": ["certificate", "certification", "completion"],
+    "answer": "Yes! Upon successful completion of the course and the final project, you will receive an industry-recognized certificate from Nishad Institute which you can showcase on LinkedIn and your resume."
+  },
+  {
+    "keywords": ["demo", "free class", "trial"],
+    "answer": "Absolutely! We offer a free demo session every weekend. You can book your slot by clicking the 'Book Free Demo' button on our homepage or by [contacting us](/contact)."
+  },
+  {
+    "keywords": ["contact", "whatsapp", "phone", "email", "address"],
+    "answer": "You can reach us via:\n- **WhatsApp/Phone**: +91 (your-number)\n- **Email**: support@nishadinstitute.com\n- **Office**: [Insert Office Address here]\nOr use our [Contact Form](/contact)."
+  }
+]
