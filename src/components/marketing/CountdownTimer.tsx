@@ -30,7 +30,7 @@ export function CountdownTimer({ targetDate }: { targetDate?: string }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [finalTarget]);
 
   return (
     <div className="flex gap-4 justify-center md:justify-start">

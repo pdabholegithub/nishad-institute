@@ -82,7 +82,7 @@ export default async function AdminTestimonialsPage() {
                   name="text" 
                   required 
                   rows={4}
-                  placeholder="The best training I've ever received..."
+                  placeholder="The best training I&apos;ve ever received..."
                   className="w-full rounded-md border border-slate-200 dark:border-slate-800 bg-transparent px-3 py-2 text-sm focus:ring-2 focus:ring-primary resize-none"
                 />
               </div>
@@ -109,7 +109,7 @@ export default async function AdminTestimonialsPage() {
                         <Star key={i} className="h-3 w-3 fill-amber-500 text-amber-500" />
                       ))}
                     </div>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 italic mb-4">"{t.text}"</p>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 italic mb-4">&ldquo;{t.text}&rdquo;</p>
                   </div>
                   <div className="flex items-center justify-between pt-4 border-t border-slate-50 dark:border-slate-800">
                     <div>
