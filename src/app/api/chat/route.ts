@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ 
       model: "gemini-2.0-flash", 
-      systemInstruction: `You are Nishad IT's specialized QA Automation Assistant. 
+      systemInstruction: `You are Nishad IT Solutions' specialized QA Automation Assistant. 
       Your expertise includes:
       - Generating comprehensive test cases (Manual and Automated)
       - Explaining Playwright, Selenium, and Cypress code

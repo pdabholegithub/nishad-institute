@@ -9,7 +9,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
               <BookOpen className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Nishad IT</span>
+              <span className="text-xl font-bold">Nishad IT Solutions</span>
             </Link>
             <p className="text-sm text-slate-600 dark:text-slate-400 text-balance leading-relaxed">
               Empowering the next generation of software engineers through comprehensive, industry-relevant training and hands-on projects.
@@ -29,7 +29,7 @@ export function Footer() {
                   className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 transition-colors py-0.5"
                 >
                   <ExternalLink className="h-3 w-3" />
-                  Live Playground
+                  Live Automation Playground
                 </a>
               </li>
             </ul>

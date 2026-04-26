@@ -1,6 +1,6 @@
 # Nishad Code Quality Standard (NCQS)
 
-This document defines the engineering standards for the Nishad Institute platform. All developers (Human or AI) must adhere to these principles before merging code.
+This document defines the engineering standards for the Nishad IT Solutions platform. All developers (Human or AI) must adhere to these principles before merging code.
 
 ## 1. Core Principles
 *   **SOLID:** Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.

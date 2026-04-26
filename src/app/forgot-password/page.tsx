@@ -25,7 +25,7 @@ export default function ForgotPasswordPage() {
           <div className="mb-10">
             <Link href="/" className="flex items-center gap-2 font-bold mb-8">
               <BookOpen className="h-8 w-8 text-primary" />
-              <span className="text-2xl text-foreground">Nishad IT Space</span>
+              <span className="text-2xl text-foreground">Automation Playground</span>
             </Link>
             
             <Link href="/login" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-6 transition-colors">

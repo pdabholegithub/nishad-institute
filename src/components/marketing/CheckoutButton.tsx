@@ -46,7 +46,7 @@ export function CheckoutButton({ courseId, price, courseTitle, userEmail, userNa
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount: orderData.amount,
         currency: orderData.currency,
-        name: "Nishad IT Solutions",
+        name: "Automation Playground",
         description: `Enrollment for ${courseTitle}`,
         order_id: orderData.id,
         handler: async function (response: {

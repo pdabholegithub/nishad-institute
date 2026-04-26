@@ -2,10 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-// Target: Next batch start date (e.g., June 1st, 2026)
-const TARGET_DATE = new Date('2026-06-01T00:00:00');
-
-export function CountdownTimer() {
+export function CountdownTimer({ targetDate }: { targetDate?: string }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -13,10 +10,12 @@ export function CountdownTimer() {
     seconds: 0,
   });
 
+  const finalTarget = targetDate ? new Date(targetDate) : new Date('2026-06-01T00:00:00');
+
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      const difference = TARGET_DATE.getTime() - now.getTime();
+      const difference = finalTarget.getTime() - now.getTime();
 
       if (difference > 0) {
         setTimeLeft({

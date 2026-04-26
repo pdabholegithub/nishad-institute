@@ -45,7 +45,7 @@ export default function LoginPage() {
                     name="email"
                     required
                     className="block w-full rounded-md border-0 py-2.5 pl-10 ring-1 ring-inset ring-input focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 bg-background"
-                    placeholder="student@nishad.com"
+                    placeholder="student@nishad-it.com"
                   />
                 </div>
               </div>
@@ -94,8 +94,8 @@ export default function LoginPage() {
               </div>
 
               <div className="text-xs text-center text-muted-foreground mt-4 space-y-2">
-                <p>Admin: admin@nishad.com / password123</p>
-                <p>Student: student@nishad.com / password123</p>
+                <p>Admin: admin@nishad-it.com / password123</p>
+                <p>Student: student@nishad-it.com / password123</p>
               </div>
             </form>
           </div>

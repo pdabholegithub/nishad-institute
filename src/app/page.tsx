@@ -50,9 +50,53 @@ const getUpcomingBatches = unstable_cache(
   { revalidate: 60 }
 );
 
+const getFAQs = unstable_cache(
+  async () => prisma.fAQ.findMany({ where: { active: true }, orderBy: { order: 'asc' } }),
+  ["faqs-list"],
+  { revalidate: 60 }
+);
+
+const getTestimonials = unstable_cache(
+  async () => prisma.testimonial.findMany({ where: { active: true }, orderBy: { createdAt: 'desc' }, take: 6 }),
+  ["testimonials-list"],
+  { revalidate: 60 }
+);
+
+const getSiteSettings = unstable_cache(
+  async () => {
+    const settings = await prisma.siteSetting.findMany();
+    return settings.reduce((acc, curr) => ({ ...acc, [curr.key]: curr.value }), {} as Record<string, string>);
+  },
+  ["site-settings"],
+  { revalidate: 60 }
+);
+
 export default async function Home() {
   const { totalStudents, totalCourses, totalBatches } = await getHomeStats();
   const upcomingBatches = await getUpcomingBatches();
+  const faqs = await getFAQs();
+  const testimonials = await getTestimonials();
+  const settings = await getSiteSettings();
+
+  const countdownDate = settings['countdown_date'] || '2026-06-01T00:00:00';
+
+  // Fallback data if DB is empty
+  const defaultFAQs = [
+    { question: "Do I need a technical background to start?", answer: "No! Our courses are designed to take you from scratch to an expert level. We start with basics and gradually move to advanced concepts." },
+    { question: "Will I get a certificate after completion?", answer: "Yes, you will receive an industry-recognized certificate from Nishad IT Solutions upon successful completion of your course and projects." },
+    { question: "Is job placement assistance provided?", answer: "Absolutely. We offer dedicated placement support, including resume building, mock interviews, and referrals to our hiring partners." },
+    { question: "Are the classes live or pre-recorded?", answer: "Most of our primary sessions are 100% Live Zoom sessions with expert mentors, accompanied by recorded backups for your future reference." }
+  ];
+
+  const displayFAQs = faqs.length > 0 ? faqs.map(f => ({ q: f.question, a: f.answer })) : defaultFAQs;
+
+  const defaultTestimonials = [
+    { name: "Priya Patel", role: "QA Engineer @ TCS", text: "The QA Automation course was extremely practical. I landed my first job within 2 months of completing the program. Highly recommend!", rating: 5 },
+    { name: "Rahul Sharma", role: "Full-Stack Dev @ Infosys", text: "Best investment I ever made. The mentors have real industry experience and the batch schedule was perfect for working professionals.", rating: 5 },
+    { name: "Sneha Deshpande", role: "DevOps Engineer @ Wipro", text: "The DevOps curriculum is up-to-date with the latest tools. The live sessions and hands-on projects gave me the confidence I needed.", rating: 5 },
+  ];
+
+  const displayTestimonials = testimonials.length > 0 ? testimonials : defaultTestimonials;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -91,7 +135,7 @@ export default async function Home() {
               <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
               Summer 2026 Admissions Open
             </div>
-            <CountdownTimer />
+            <CountdownTimer targetDate={countdownDate} />
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-balance mb-6">
             Launch Your IT Career <br className="hidden md:inline" />
@@ -136,12 +180,7 @@ export default async function Home() {
             <p className="text-muted-foreground max-w-xl mx-auto">Everything you need to know about our courses and support.</p>
           </div>
           <div className="max-w-3xl mx-auto space-y-3">
-            {[
-              { q: "Do I need a technical background to start?", a: "No! Our courses are designed to take you from scratch to an expert level. We start with basics and gradually move to advanced concepts." },
-              { q: "Will I get a certificate after completion?", a: "Yes, you will receive an industry-recognized certificate from Nishad IT Solutions upon successful completion of your course and projects." },
-              { q: "Is job placement assistance provided?", a: "Absolutely. We offer dedicated placement support, including resume building, mock interviews, and referrals to our hiring partners." },
-              { q: "Are the classes live or pre-recorded?", a: "Most of our primary sessions are 100% Live Zoom sessions with expert mentors, accompanied by recorded backups for your future reference." }
-            ].map((faq, i) => (
+            {displayFAQs.map((faq, i) => (
               <details key={i} className="group rounded-xl border bg-white dark:bg-slate-900 shadow-sm overflow-hidden transition-all duration-300 open:ring-2 open:ring-primary/20">
                 <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold hover:text-primary transition-colors">
                   {faq.q}
@@ -315,11 +354,11 @@ export default async function Home() {
                   <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
                     Practice with Our{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-amber-400">
-                      Live Code Playground
+                      Live Automation Playground
                     </span>
                   </h2>
                   <p className="text-slate-400 text-lg max-w-xl mx-auto lg:mx-0">
-                    Experiment with QA automation scripts, explore frameworks, and sharpen your skills in our dedicated browser-based playground — no setup required.
+                    Experiment with QA automation scripts, explore frameworks, and sharpen your skills in our dedicated browser-based Automation Playground — no setup required.
                   </p>
                   <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                     {["Playwright", "Selenium", "Python", "JavaScript", "Java", "API Testing"].map((tag) => (
@@ -341,7 +380,7 @@ export default async function Home() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-secondary to-indigo-700 px-8 py-4 text-base font-bold text-white shadow-lg shadow-secondary/30 hover:from-secondary/90 hover:to-indigo-800 transition-all hover:scale-105 hover:shadow-secondary/50"
                   >
-                    Open Playground
+                    Open Automation Playground
                     <ExternalLink className="h-4 w-4" />
                   </a>
                   <p className="text-xs text-slate-500">Opens in a new tab • Free to use</p>
@@ -360,11 +399,7 @@ export default async function Home() {
             <p className="text-muted-foreground max-w-xl mx-auto">Real feedback from real learners who transformed their careers with us.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { name: "Priya Patel", role: "QA Engineer @ TCS", text: "The QA Automation course was extremely practical. I landed my first job within 2 months of completing the program. Highly recommend!", rating: 5 },
-              { name: "Rahul Sharma", role: "Full-Stack Dev @ Infosys", text: "Best investment I ever made. The mentors have real industry experience and the batch schedule was perfect for working professionals.", rating: 5 },
-              { name: "Sneha Deshpande", role: "DevOps Engineer @ Wipro", text: "The DevOps curriculum is up-to-date with the latest tools. The live sessions and hands-on projects gave me the confidence I needed.", rating: 5 },
-            ].map((t, i) => (
+            {displayTestimonials.map((t, i) => (
               <div key={i} className="rounded-2xl border bg-card p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
@@ -449,10 +484,10 @@ export default async function Home() {
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4">
                   {resource.desc}
                 </p>
-                <button className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white group/btn">
+                <Link href="/signup" className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white group/btn hover:text-primary transition-colors">
                   <Download className="h-3.5 w-3.5 text-primary group-hover/btn:translate-y-0.5 transition-transform" />
                   Download Now
-                </button>
+                </Link>
               </div>
             ))}
           </div>

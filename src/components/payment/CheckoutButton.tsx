@@ -38,7 +38,7 @@ export function CheckoutButton({
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_dummykey", 
         amount: order.amount,
         currency: order.currency,
-        name: "Nishad IT Solutions",
+        name: "Automation Playground",
         description: "Course Enrollment Fee",
         order_id: order.id,
         handler: async function (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) {

@@ -64,7 +64,7 @@ export default function AdminSettingsPage() {
                   <label className="text-sm font-medium leading-none">Institute Name</label>
                   <input 
                     type="text" 
-                    defaultValue="Nishad IT Space"
+                    defaultValue="Nishad IT Solutions"
                     className="flex h-10 w-full md:w-2/3 rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" 
                   />
                 </div>
@@ -94,6 +94,35 @@ export default function AdminSettingsPage() {
                     defaultValue="Pune, Maharashtra, India"
                     className="flex w-full md:w-2/3 rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 resize-none" 
                   />
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+                  <h4 className="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Landing Page Config</h4>
+                  <form action={async (formData) => {
+                    const { updateSiteSetting } = await import("@/lib/actions");
+                    const date = formData.get("countdown_date");
+                    const data = new FormData();
+                    data.append("key", "countdown_date");
+                    data.append("value", date as string);
+                    await updateSiteSetting(data);
+                    alert("Countdown updated!");
+                  }} className="grid gap-4">
+                    <div className="grid gap-2">
+                      <label className="text-sm font-medium leading-none">Admissions Countdown Date</label>
+                      <div className="flex items-center gap-3">
+                        <input 
+                          name="countdown_date"
+                          type="datetime-local" 
+                          defaultValue="2026-05-31T23:59"
+                          className="flex h-10 w-full md:w-2/3 rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" 
+                        />
+                        <button type="submit" className="rounded-md bg-slate-900 px-3 py-2 text-xs font-bold text-white hover:bg-slate-800">
+                          Update Timer
+                        </button>
+                      </div>
+                      <p className="text-[10px] text-slate-500">Controls the countdown timer in the header/hero section.</p>
+                    </div>
+                  </form>
                 </div>
               </div>
               <div className="p-6 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex justify-end">

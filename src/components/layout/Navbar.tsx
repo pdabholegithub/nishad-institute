@@ -36,7 +36,7 @@ export async function Navbar() {
               className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors py-1 border border-primary/30 hover:border-primary/60 rounded-full px-4 bg-primary/5 dark:bg-primary/10 hover:bg-primary/10 dark:hover:bg-primary/20"
             >
               <FlaskConical className="h-3.5 w-3.5" />
-              Playground
+              Automation Playground
             </a>
           </div>
 

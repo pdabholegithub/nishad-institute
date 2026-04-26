@@ -109,8 +109,8 @@ npx prisma studio
 ---
 
 ## 🔐 Credentials (Demo)
-- **Admin**: `admin@nishad.com` / `password123`
-- **Student**: `student@nishad.com` / `password123`
+- **Admin**: `admin@automationplayground.com` / `password123`
+- **Student**: `student@automationplayground.com` / `password123`
 
 ---
-*Developed for Nishad IT Solutions. Empowering IT Professionals Worldwide.*
+*Developed for Automation Playground. Empowering IT Professionals Worldwide.*

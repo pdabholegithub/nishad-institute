@@ -166,3 +166,16 @@ import { signOut } from '@/auth';
 export async function logout() {
   await signOut();
 }
+export async function updateSiteSetting(formData: FormData) {
+  const key = formData.get('key') as string;
+  const value = formData.get('value') as string;
+
+  await prisma.siteSetting.upsert({
+    where: { key },
+    update: { value },
+    create: { key, value },
+  });
+
+  revalidatePath('/');
+  revalidatePath('/admin/settings');
+}

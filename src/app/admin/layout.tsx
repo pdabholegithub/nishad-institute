@@ -8,7 +8,9 @@ import {
   LogOut,
   GraduationCap,
   CreditCard,
-  Layers
+  Layers,
+  HelpCircle,
+  Quote
 } from "lucide-react";
 
 import { auth } from "@/auth";
@@ -74,6 +76,24 @@ export default async function AdminDashboardLayout({
             >
               <CreditCard className="h-4 w-4" />
               Finance &amp; Invoices
+            </Link>
+
+            <div className="mt-8 mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
+              Landing Page
+            </div>
+            <Link
+              href="/admin/content/faq"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-300 transition-all hover:bg-slate-800 hover:text-slate-50"
+            >
+              <HelpCircle className="h-4 w-4" />
+              Manage FAQ
+            </Link>
+            <Link
+              href="/admin/content/testimonials"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-300 transition-all hover:bg-slate-800 hover:text-slate-50"
+            >
+              <Quote className="h-4 w-4" />
+              Testimonials
             </Link>
             
             <div className="mt-8 mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
