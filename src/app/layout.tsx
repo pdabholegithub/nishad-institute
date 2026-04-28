@@ -14,6 +14,9 @@ import { WhatsAppButton } from "@/components/marketing/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Nishad IT Solutions | Master Your Future",
   description: "Industry-leading IT training institute specializing in QA Automation, Full-stack Development, and DevOps.",
+  icons: {
+    icon: '/favicon.png?v=2',
+  },
 };
 
 export default function RootLayout({

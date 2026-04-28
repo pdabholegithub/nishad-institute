@@ -1,4 +1,4 @@
-# 🎓 Nishad Institute Solutions: Next-Gen EdTech Platform
+# 🎓 Nishad IT Solutions: Next-Gen EdTech Platform
 
 A professional, full-stack management platform for IT training institutes. Built with **Next.js 14**, **Prisma**, and **NextAuth v5**, this platform provides a high-end experience for administrators, students, and prospective learners.
 
