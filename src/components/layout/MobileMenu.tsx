@@ -38,7 +38,7 @@ export function MobileMenu({ session }: MobileMenuProps) {
 
       {/* Mobile menu drawer */}
       {isOpen && (
-        <div className="fixed inset-0 top-16 z-50 bg-background md:hidden animate-in slide-in-from-top-2 duration-300">
+        <div className="fixed inset-0 top-16 z-[100] bg-background/95 backdrop-blur-xl md:hidden animate-in slide-in-from-top-2 duration-300 shadow-2xl">
           <div className="container flex flex-col gap-6 p-6">
             <nav className="flex flex-col space-y-4">
               <Link 
