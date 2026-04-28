@@ -41,12 +41,13 @@ export function CountdownTimer({ targetDate }: { targetDate?: string }) {
         { label: 'Sec', value: timeLeft.seconds },
       ].map((item, i) => (
         <div key={i} className="flex flex-col items-center">
-          <div className="bg-slate-900/50 dark:bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 py-2 min-w-[60px] shadow-lg">
-            <span className="text-xl md:text-2xl font-black text-primary tabular-nums">
+          <div className="bg-slate-950 dark:bg-slate-900 rounded-2xl p-4 min-w-[70px] shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-800 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="relative text-2xl md:text-3xl font-black text-primary tabular-nums drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
               {String(item.value).padStart(2, '0')}
             </span>
           </div>
-          <span className="text-[10px] uppercase tracking-widest font-bold text-slate-500 mt-1.5">{item.label}</span>
+          <span className="text-[10px] uppercase tracking-widest font-black text-slate-500 mt-2">{item.label}</span>
         </div>
       ))}
     </div>

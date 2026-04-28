@@ -9,25 +9,25 @@ export async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <nav className="sticky top-0 z-[110] w-full border-b border-slate-200/50 dark:border-slate-800/50 bg-background/80 backdrop-blur-xl transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="relative h-8 w-8">
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="relative h-10 w-10">
                 <Image 
                   src="/logo-light.png" 
                   alt="Nishad IT Solutions Logo" 
-                  width={32} 
-                  height={32} 
-                  className="h-8 w-8 object-contain dark:hidden"
+                  width={40} 
+                  height={40} 
+                  className="h-10 w-10 object-contain dark:hidden"
                 />
                 <Image 
                   src="/logo-dark.png" 
                   alt="Nishad IT Solutions Logo" 
-                  width={32} 
-                  height={32} 
-                  className="hidden h-8 w-8 object-contain dark:block"
+                  width={40} 
+                  height={40} 
+                  className="hidden h-10 w-10 object-contain dark:block"
                 />
               </div>
               <span className="text-xl font-bold tracking-tight text-foreground">

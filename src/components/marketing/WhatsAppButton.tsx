@@ -13,7 +13,7 @@ export function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-green-500/40 transition-all hover:scale-110 active:scale-95 group overflow-hidden"
+      className="fixed bottom-24 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-2xl shadow-green-500/40 transition-all hover:scale-110 active:scale-95 group overflow-hidden"
       aria-label="Chat on WhatsApp"
     >
       <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />

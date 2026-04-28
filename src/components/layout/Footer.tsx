@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BookOpen, ExternalLink } from 'lucide-react';
 
 export function Footer() {
@@ -6,10 +7,25 @@ export function Footer() {
     <footer className="border-t bg-muted/20">
       <div className="container mx-auto px-4 md:px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <BookOpen className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold">Nishad IT Solutions</span>
+          <div className="space-y-6">
+            <Link href="/" className="flex flex-col space-y-4">
+              <div className="relative h-16 w-16">
+                <Image 
+                  src="/logo-light.png" 
+                  alt="Nishad IT Solutions Logo" 
+                  width={64} 
+                  height={64} 
+                  className="h-16 w-16 object-contain dark:hidden"
+                />
+                <Image 
+                  src="/logo-dark.png" 
+                  alt="Nishad IT Solutions Logo" 
+                  width={64} 
+                  height={64} 
+                  className="hidden h-16 w-16 object-contain dark:block"
+                />
+              </div>
+              <span className="text-2xl font-bold text-slate-900 dark:text-white">Nishad IT Solutions</span>
             </Link>
             <p className="text-sm text-slate-600 dark:text-slate-400 text-balance leading-relaxed">
               Empowering the next generation of software engineers through comprehensive, industry-relevant training and hands-on projects.
