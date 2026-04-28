@@ -31,5 +31,6 @@ jobs:
           export NEXT_PUBLIC_RAZORPAY_KEY_ID="dummy"
           export GEMINI_API_KEY="dummy"
           export AUTH_SECRET="dummy"
+          export SKIP_ENV_VALIDATION=true
           npx prisma generate
           npm run build
