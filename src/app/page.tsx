@@ -314,7 +314,7 @@ export default async function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl font-extrabold text-primary">{totalStudents > 0 ? `${totalStudents}+` : "500+"}</div>
+              <div className="text-4xl font-extrabold text-primary">{totalStudents > 500 ? `${totalStudents}+` : "500+"}</div>
               <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Students Enrolled</div>
             </div>
             <div className="space-y-2">
