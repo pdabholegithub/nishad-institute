@@ -84,8 +84,8 @@ export default function CareersPage() {
             <section className="bg-orange-600 rounded-2xl p-8 text-white text-center">
               <h2 className="text-2xl font-bold mb-4">Don&apos;t See a Fit?</h2>
               <p className="mb-6 opacity-90">We are always looking for passionate people to join us. Send your resume to:</p>
-              <a href="mailto:careers@nishad-it.com" className="text-xl font-bold underline hover:opacity-80 transition-opacity">
-                careers@nishad-it.com
+              <a href="mailto:careers@nis.com" className="text-xl font-bold underline hover:opacity-80 transition-opacity">
+                careers@nis.com
               </a>
             </section>
           </div>

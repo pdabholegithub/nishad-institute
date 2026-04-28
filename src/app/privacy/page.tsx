@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage() {
               <p>
                 If you have any questions about this privacy policy or our privacy practices, please contact us at:
                 <br />
-                <strong>Email:</strong> privacy@nishad-it.com
+                <strong>Email:</strong> privacy@nis.com
                 <br />
                 <strong>Address:</strong> Nishad IT Solutions, Pune, Maharashtra, India.
               </p>

@@ -12,7 +12,7 @@ export async function authenticate(
 ) {
   try {
     const email = formData.get('email') as string;
-    const redirectTo = email === 'admin@nishad.com' ? '/admin' : '/student';
+    const redirectTo = email === 'admin@nis.com' ? '/admin' : '/student';
     await signIn('credentials', { ...Object.fromEntries(formData), redirectTo });
   } catch (error) {
     if (error instanceof AuthError) {
@@ -28,6 +28,13 @@ export async function authenticate(
 }
 
 export async function createCourse(formData: FormData) {
+  const securityPin = formData.get('securityPin') as string;
+  const MASTER_PIN = process.env.ADMIN_SECURITY_PIN || "Nishad2026";
+
+  if (securityPin !== MASTER_PIN) {
+    throw new Error("Invalid Security PIN. Authorization failed.");
+  }
+
   const title = formData.get('title') as string;
   const description = formData.get('description') as string;
   const duration = formData.get('duration') as string;
@@ -55,7 +62,51 @@ export async function createCourse(formData: FormData) {
   redirect('/admin/courses');
 }
 
+export async function updateCourse(formData: FormData) {
+  const securityPin = formData.get('securityPin') as string;
+  const MASTER_PIN = process.env.ADMIN_SECURITY_PIN || "1234";
+
+  if (securityPin !== MASTER_PIN) {
+    throw new Error("Invalid Security PIN. Authorization failed.");
+  }
+
+  const id = formData.get('id') as string;
+  const title = formData.get('title') as string;
+  const description = formData.get('description') as string;
+  const duration = formData.get('duration') as string;
+  const level = formData.get('level') as string;
+  const price = formData.get('price') as string;
+  const technologies = formData.get('technologies') as string;
+  const features = formData.get('features') as string;
+  const popular = formData.get('popular') === 'on';
+
+  await prisma.course.update({
+    where: { id },
+    data: {
+      title,
+      description,
+      duration,
+      level,
+      price,
+      technologies,
+      features,
+      popular
+    }
+  });
+
+  revalidatePath('/admin');
+  revalidatePath('/admin/courses');
+  redirect('/admin/courses');
+}
+
 export async function deleteCourse(formData: FormData) {
+  const securityPin = formData.get('securityPin') as string;
+  const MASTER_PIN = process.env.ADMIN_SECURITY_PIN || "Nishad2026";
+
+  if (securityPin !== MASTER_PIN) {
+    throw new Error("Invalid Security PIN. Authorization failed.");
+  }
+
   const courseId = formData.get('courseId') as string;
   await prisma.course.delete({ where: { id: courseId } });
   revalidatePath('/admin/courses');

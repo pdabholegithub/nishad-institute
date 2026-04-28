@@ -22,7 +22,7 @@ export function MobileMenu({ session }: MobileMenuProps) {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const isAdmin = session?.user?.role === 'ADMIN' || session?.user?.email === 'admin@nishad.com';
+  const isAdmin = session?.user?.role === 'ADMIN' || session?.user?.email === 'admin@nis.com';
   const dashboardHref = isAdmin ? '/admin' : '/student';
 
   return (

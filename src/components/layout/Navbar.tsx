@@ -45,7 +45,7 @@ export async function Navbar() {
             {session?.user ? (
               <>
                 <Link 
-                  href={((session.user as { role?: string }).role === 'ADMIN' || session.user?.email === 'admin@nishad.com') ? "/admin" : "/student"}
+                  href={((session.user as { role?: string }).role === 'ADMIN' || session.user?.email === 'admin@nis.com') ? "/admin" : "/student"}
                   className="relative text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary transition-colors py-1 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-right hover:after:origin-left"
                 >
                   Dashboard

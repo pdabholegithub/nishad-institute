@@ -104,7 +104,7 @@ export default function TermsOfServicePage() {
               <p>
                 If you have any questions about these Terms, please contact us at:
                 <br />
-                <strong>Email:</strong> legal@nishad-it.com
+                <strong>Email:</strong> legal@nis.com
               </p>
             </section>
           </div>

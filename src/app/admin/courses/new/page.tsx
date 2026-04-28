@@ -62,6 +62,14 @@ export default function NewCoursePage() {
                <input type="checkbox" id="popular" name="popular" className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-600" />
                <label htmlFor="popular" className="text-sm font-medium text-slate-700 dark:text-slate-300">Mark as Popular Course</label>
             </div>
+
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+              <div className="grid gap-2">
+                <label htmlFor="securityPin" className="text-sm font-bold text-red-600 dark:text-red-400 uppercase tracking-wider">Security Authorization PIN</label>
+                <input id="securityPin" name="securityPin" type="password" required className="flex h-10 w-full rounded-md border-2 border-red-100 dark:border-red-900/30 bg-red-50/30 dark:bg-red-900/10 px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600" placeholder="Enter PIN to authorize changes" />
+                <p className="text-[10px] text-slate-500 italic">This action is sensitive. Please enter the master security PIN to proceed.</p>
+              </div>
+            </div>
           </div>
           
           <div className="pt-4 flex border-t border-slate-200 dark:border-slate-800 justify-end gap-3">

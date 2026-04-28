@@ -3,7 +3,11 @@ const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Seeding database with consolidated program data...');
+  console.log('🌱 Cleaning up and Seeding database...');
+
+  // Clear existing courses to remove any test data
+  await prisma.course.deleteMany({});
+  console.log('🗑️  Cleared existing courses');
 
   // ── COURSES ──────────────────────────────────────────────
   const courses = [
@@ -111,11 +115,11 @@ async function main() {
   const hashedPwd = bcrypt.hashSync("password123", 10);
 
   await prisma.user.upsert({
-    where: { email: "admin@nishad.com" },
+    where: { email: "admin@nis.com" },
     update: {},
     create: {
       name: "Nishad Admin",
-      email: "admin@nishad.com",
+      email: "admin@nis.com",
       passwordHash: hashedPwd,
       role: "ADMIN"
     }

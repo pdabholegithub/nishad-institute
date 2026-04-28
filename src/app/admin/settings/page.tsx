@@ -73,7 +73,7 @@ export default function AdminSettingsPage() {
                   <label className="text-sm font-medium leading-none">Support Email Address</label>
                   <input 
                     type="email" 
-                    defaultValue="hello@nishad-it.com"
+                    defaultValue="hello@nis.com"
                     className="flex h-10 w-full md:w-2/3 rounded-md border border-slate-200 dark:border-slate-700 bg-transparent px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600" 
                   />
                 </div>

@@ -551,7 +551,7 @@ export default async function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground uppercase tracking-wider font-medium">Email Us</p>
-                    <p className="font-semibold">hello@nishad-it.com</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">hello@nis.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

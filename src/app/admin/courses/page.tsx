@@ -65,16 +65,28 @@ export default async function CoursesListPage() {
                       <td className="p-6 align-middle text-right font-medium">₹{course.price}</td>
                       <td className="p-6 align-middle text-right">
                         <div className="flex justify-end gap-2">
-                          <button disabled className="inline-flex items-center justify-center rounded-md border border-slate-200 px-3 py-1 text-xs font-medium text-slate-500 opacity-50 cursor-not-allowed">
+                          <Link 
+                            href={`/admin/courses/${course.id}/edit`}
+                            className="inline-flex items-center justify-center rounded-md border border-slate-200 px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-100 transition-colors"
+                          >
                             Edit
-                          </button>
-                          <form action={async () => {
-                            "use server";
-                            const { deleteCourse } = await import('@/lib/actions');
-                            const formData = new FormData();
-                            formData.append('courseId', course.id);
-                            await deleteCourse(formData);
-                          }}>
+                          </Link>
+                          <form 
+                            action={async (formData) => {
+                              "use server";
+                              const { deleteCourse } = await import('@/lib/actions');
+                              await deleteCourse(formData);
+                            }}
+                            className="flex items-center gap-2"
+                          >
+                            <input type="hidden" name="courseId" value={course.id} />
+                            <input 
+                              type="password" 
+                              name="securityPin" 
+                              placeholder="PIN" 
+                              required
+                              className="w-16 h-8 px-2 text-xs border rounded focus:ring-1 focus:ring-red-500 outline-none"
+                            />
                             <button type="submit" className="inline-flex items-center justify-center rounded-md bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 px-3 py-1 text-xs font-medium transition-colors">
                               Delete
                             </button>

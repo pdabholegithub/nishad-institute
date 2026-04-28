@@ -19,7 +19,7 @@ export const authConfig = {
         const userRole = (auth?.user as { role?: string })?.role || (auth as { role?: string })?.role;
         const userEmail = auth?.user?.email || (auth as { email?: string })?.email;
         
-        if (isAdminRoute && userRole !== 'ADMIN' && userEmail !== 'admin@nishad.com') {
+        if (isAdminRoute && userRole !== 'ADMIN' && userEmail !== 'admin@nis.com') {
            return Response.redirect(new URL('/student', nextUrl));
         }
         
@@ -29,7 +29,7 @@ export const authConfig = {
         const userRole = (auth?.user as { role?: string })?.role || (auth as { role?: string })?.role;
         const userEmail = auth?.user?.email || (auth as { email?: string })?.email;
         
-        if (userRole === 'ADMIN' || userEmail === 'admin@nishad.com') {
+        if (userRole === 'ADMIN' || userEmail === 'admin@nis.com') {
           return Response.redirect(new URL('/admin', nextUrl));
         }
         return Response.redirect(new URL('/student', nextUrl));

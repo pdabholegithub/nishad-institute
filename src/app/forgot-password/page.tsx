@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
                       name="email"
                       required
                       className="flex h-11 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 px-4 py-2 pl-10 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm hover:border-slate-300 dark:hover:border-slate-700"
-                      placeholder="student@nishad.com"
+                      placeholder="student@nis.com"
                     />
                   </div>
                 </div>
