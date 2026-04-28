@@ -109,7 +109,7 @@ export default async function Home() {
             "@type": "EducationalOrganization",
             "name": "Nishad IT Solutions",
             "url": "https://nishad-institute.vercel.app/",
-            "logo": "https://nishad-institute.vercel.app/images/logo.png",
+            "logo": "/logo-light.png",
             "description": "Premium IT training institute for QA Automation, Full-stack Development, and DevOps.",
             "address": {
               "@type": "PostalAddress",

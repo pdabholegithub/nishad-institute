@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { BookOpen, FlaskConical } from 'lucide-react';
 import { auth } from '@/auth';
 import { logout } from '@/lib/actions';
@@ -13,7 +14,22 @@ export async function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <BookOpen className="h-6 w-6 text-primary" />
+              <div className="relative h-8 w-8">
+                <Image 
+                  src="/logo-light.png" 
+                  alt="Nishad IT Solutions Logo" 
+                  width={32} 
+                  height={32} 
+                  className="h-8 w-8 object-contain dark:hidden"
+                />
+                <Image 
+                  src="/logo-dark.png" 
+                  alt="Nishad IT Solutions Logo" 
+                  width={32} 
+                  height={32} 
+                  className="hidden h-8 w-8 object-contain dark:block"
+                />
+              </div>
               <span className="text-xl font-bold tracking-tight text-foreground">
                 Nishad IT Solutions
               </span>
