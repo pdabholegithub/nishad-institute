@@ -5,9 +5,12 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Cleaning up and Seeding database...');
 
-  // Clear existing courses to remove any test data
+  // Clear existing data in correct order to avoid foreign key violations
+  await prisma.enrollment.deleteMany({});
+  await prisma.batch.deleteMany({});
   await prisma.course.deleteMany({});
-  console.log('🗑️  Cleared existing courses');
+  
+  console.log('🗑️  Cleared existing Enrollments, Batches, and Courses');
 
   // ── COURSES ──────────────────────────────────────────────
   const courses = [
